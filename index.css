@@ -6,4 +6,163 @@
 
 body{
     font-family: 'Inter', sans-serif;
+    font-style: normal;
+    width: 100%;
+    height: 100%;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+
+    width: 1276px;
+    height: 737px;
+}
+
+.header-container{
+    width: 978px;
+    height: 737px;
+    background: linear-gradient(290.1deg, #D6E6FE 0%, rgba(214, 252, 254, 0) 100%);
+    border-radius: 0px 0px 35px 35px;
+}
+
+.logo{
+    width: 64px;
+    height: 64px;
+}
+
+.header-element{
+    position: relative;
+    width: 564px;
+    top: 75px;
+    left: 116px;
+}
+
+.header-element-container{
+    margin-top: 127px;
+    width: 564px;
+}
+
+.header-element-container h1{
+    width: 83%;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 110%;
+    letter-spacing: -0.05em;
+    color: #253347;
+    align-self: stretch;
+}
+
+.header-element-container p{
+    width: 83%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color:  #5E6E85;
+    order: 1;
+}
+
+.header-subheader-container{
+    display: flex;
+    margin-left: 43rem;
+    margin-top: -18rem;
+    width: 564px;
+    height: 484px;
+    background: #fff;
+    box-shadow: 16px 32px 56px rgba(143, 174, 207, 0.25);
+    border-radius: 16px;
+}
+
+.header-sub-container{
+    width: 500px;
+    height: 430px;
+    margin:32px 32px 32px 32px;
+}
+
+label{
+    position: relative;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #253347;
+    bottom: 0.5rem; 
+    left: 1rem;
+}
+
+input{
+    width: 31px;
+    height: 31px;
+    box-sizing: border-box;
+    background: rgba(52, 95, 246, 0.15);
+}
+
+.radio-container{
+    margin-top: 2.5rem;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.heightLabel{
+    display: flex;
+    width: 500px;
+    height: 120px;
+    background: #e93407;
+}
+
+.middle-container{
+    position: relative;
+    display: flex;
+    width: 1160px;
+    height: 533px;
+    /* background: #e93407; */
+    /* top: 66px; */
+    margin: 0 auto;
+}
+
+.middle-container-element{
+    display: flex;
+    flex-direction: row;
+    gap: 131px;
+}
+
+.curve{
+    position: relative;
+    left: 25rem;
+}
+
+.bmi-result{
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 110%;
+    letter-spacing: -0.05em;
+    width: 465px;
+    height: 106px;
+    color: #253347;
+    align-self: stretch;
+}
+.healthy-range{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #5E6E85;
+    width: 465px;
+    height: 168px;
+}
+
+.manIcon{
+    display: flex;
+    width: 564px;
+    height: 533px;
+}
+
+.fourth-container-element{
+    position: relative;
+    top: 96px;
+    width: 100%;
+    height: 402px;
+    background: red;
+    /* background: linear-gradient(290.1deg, #D6E6FE 0%, rgba(214, 252, 254, 0) 100%); */
+    /* opacity: 0.25; */
+    border-radius: 35px;
 }
