@@ -32,20 +32,20 @@ const createElement = (tag, classNames = [], attributes = {}) => {
   imperialContainer.appendChild(createElement("label", ["radio-label"], { textContent: "Imperial" }));
 
 
-  const metricCard = metricContainer.appendChild(createElement("div", ["card", "metric-card"]));
-  const metricCardBody = metricCard.appendChild(createElement("div", ["card-body"]))
+  // const metricCard = metricContainer.appendChild(createElement("div", ["card", "metric-card"]));
+  // const metricCardBody = metricCard.appendChild(createElement("div", ["card-body"]))
 
-  const metricHeight = metricCardBody.appendChild(createElement("div", ["height-metric-container"]))
-  const heightLabel = metricHeight.appendChild(createElement("label", ["height-label"], { textContent: "Height" }));
-  const heightInput = metricHeight.appendChild(createElement("input", ["input-field"], { textContent: "cm" }));
-  heightInput.type = 'number';
-  heightInput.min = '0';
+  // const metricHeight = metricCardBody.appendChild(createElement("div", ["height-metric-container"]))
+  // const heightLabel = metricHeight.appendChild(createElement("label", ["height-label"], { textContent: "Height" }));
+  // const heightInput = metricHeight.appendChild(createElement("input", ["input-field"], { textContent: "cm" }));
+  // heightInput.type = 'number';
+  // heightInput.min = '0';
 
-  const metricWeight = metricCardBody.appendChild(createElement("div", ["weight-metric-container"]))
-  const wieightLabel = metricWeight.appendChild(createElement("label", ["weight-label"], { textContent: "Weights" }));
-  const wieightInput = metricWeight.appendChild(createElement("input", ["input-field"], { textContent: "kg" }));
-  wieightInput.type = 'number';
-  wieightInput.min = '0';
+  // const metricWeight = metricCardBody.appendChild(createElement("div", ["weight-metric-container"]))
+  // const wieightLabel = metricWeight.appendChild(createElement("label", ["weight-label"], { textContent: "Weights" }));
+  // const wieightInput = metricWeight.appendChild(createElement("input", ["input-field"], { textContent: "kg" }));
+  // wieightInput.type = 'number';
+  // wieightInput.min = '0';
   
   headerSubContainer.appendChild(selectContainer);
   document.body.appendChild(section);
