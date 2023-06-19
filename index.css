@@ -462,33 +462,40 @@ body{
 }
 
 .result-div{
-  /* display: flex; */
-  /* background: blueviolet; */
-  display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 32px;
-gap: 24px;
-
-width: 500px;
-height: 166px;
-
-background: linear-gradient(90deg, #345FF7 0%, #587DFF 100%);
-border-radius: 16px 999px 999px 16px;
+    display: flex;
+    padding: 32px;
+    gap: 24px;
+    width: 500px;
+    height: 166px;
+    background: linear-gradient(90deg, #345FF7 0%, #587DFF 100%);
+    border-radius: 16px 999px 999px 16px;
 }
 
 .result-content{
-    position: fixed;
     display: flex;
-    /* background: #ef5c37; */
-    width: 120px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 2rem;
     color: #FFFFFF;
 }
 
+.result-calculator{
+    display: flex;
+}
+
+.result-text{
+    width: 215px;
+    height: 84px;
+}
+
 .result-element{
+    text-align: center;
+    width: 170px;
+    height: 80px;
+    font-size: 27px;
+    display: flex;
     color: #ffffff;
-    background: #40e907;
+    /* background: #40e907; */
 }
 
 .height-label{

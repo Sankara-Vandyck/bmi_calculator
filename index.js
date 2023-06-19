@@ -35,133 +35,150 @@ const createElement = (tag, classNames = [], attributes = {}) => {
 
   const selectedContainers = document.querySelector(".radio-container");
   
-  let selectedUnit = "metric";
-  let metricCart = null;
-  let imperialCart = null;
-  let selectedContainer = null;
-  
-  // Function to handle unit selection change
-  function handleUnitChange(event) {
-    selectedUnit = event.target.value;
-  
-    // Perform any necessary actions based on the selected unit
-    if (selectedUnit === "metric") {
-      // Show metric cart and hide imperial cart
-      console.log("metric selected");
-      if (!metricCart) {
-        metricCart = createMetricCart();
-        function createMetricCart() {
-          const cart = createElement("div", ["metric-cart"]);
-          // ... (add your metric cart content here)
-          const metricElementCart = cart.appendChild(createElement("div", ["metric-element-cart"]));
-          const heightWeightElement = metricElementCart.appendChild(createElement("div", ["metric-height-weight"]))
-          const heightLabel = heightWeightElement.appendChild(createElement("div", ["height-label-element"]));
-          heightLabel.appendChild(createElement("h2", ["height-label"], { textContent: "Height" }));
-          const heightInput = heightLabel.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
-          
-          heightInput.addEventListener("keyup", function(event) {
-            if (event.key === "Enter") {
-              calculateMetricResult();
-            }
-          });
-          
-          const weightLabel = heightWeightElement.appendChild(createElement("div", ["weight-label-element"]));
-          weightLabel.appendChild(createElement("h2", ["height-label"], { textContent: "Weight" }));
-          const weightInput = weightLabel.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
-        
-          weightInput.addEventListener("keyup", function(event) {
-            if (event.key === "Enter") {
-              calculateMetricResult();
-            }
-          });
-        
-          const resultDiv = metricElementCart.appendChild(createElement("div", ["result-div"]));
-          const resultContent = resultDiv.appendChild(createElement("div",["result-content"]));
-          resultContent.appendChild(createElement("div",["result-element"]));
-          function calculateMetricResult() {
-            const height = parseInt(heightInput.value);
-            const weight = parseInt(weightInput.value);
-            const result = calculateMetric(height, weight);
-            resultContent.textContent = `Your BMI is... ${result}`;
-          }
-          return cart;
-        }
-        
-        function calculateMetric(height, weight) {
-          const bmi = weight / ((height / 100) ** 2);
-          return bmi.toFixed(1); // Return BMI rounded to 1 decimal places
-        }
-      }
-      metricCart.style.display = "block";
-      
-      if (imperialCart) {
-        imperialCart.style.display = "none";
-      }
-         // Append imperial cart to the selected container
-         if (selectedContainer) {
-          selectedContainer.appendChild(metricCart);
-        } 
+let selectedUnit = "metric";
+let metricCart = null;
+let imperialCart = null;
+let selectedContainer = null;
 
-    } else if (selectedUnit === "imperial") {
-      // Show imperial cart and hide metric cart
-      console.log("imperial selected");
-      if (!imperialCart) {
-        imperialCart = createImperialCart();
-         // Function to create the cart for imperial calculations
-      function createImperialCart() {
-      const cart = createElement("div", ["imperial-cart"]);
-      const imperialElementCart = cart.appendChild(createElement("div", ["imperial-element-cart"]));
-      const imperialContent = imperialElementCart.appendChild(createElement("div", ["imperial-content"]))
-      const heightWeightElement = imperialContent.appendChild(createElement("div", ["imperial-height-weight"]))
-      const heightLabel = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
-      heightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Height" }));
-      const heightInput = heightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
+// Function to handle unit selection change
+function handleUnitChange(event) {
+  selectedUnit = event.target.value;
 
-      const heightLabelContent = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
-      heightLabelContent.appendChild(createElement("h2", ["imperial-label"]));
-      const weightInput = heightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
-
-      return cart;
+  // Perform any necessary actions based on the selected unit
+  if (selectedUnit === "metric") {
+    // Show metric cart and hide imperial cart
+    console.log("metric selected");
+    if (!metricCart) {
+      metricCart = createMetricCart();
     }
+    metricCart.style.display = "block";
+
+    if (imperialCart) {
+      imperialCart.style.display = "none";
     }
-      imperialCart.style.display = "block";
-      
-      if (metricCart) {
-        metricCart.style.display = "none";
-      }
-       // Append imperial cart to the selected container
+
+    // Append metric cart to the selected container
+    if (selectedContainer) {
+      selectedContainer.appendChild(metricCart);
+    }
+  } else if (selectedUnit === "imperial") {
+    // Show imperial cart and hide metric cart
+    console.log("imperial selected");
+    if (!imperialCart) {
+      imperialCart = createImperialCart();
+    }
+    imperialCart.style.display = "block";
+
+    if (metricCart) {
+      metricCart.style.display = "none";
+    }
+
+    // Append imperial cart to the selected container
     if (selectedContainer) {
       selectedContainer.appendChild(imperialCart);
     }
-    }
-  }                        
-  
-  // Function to set the selected container based on the selected unit
-function setSelectedContainer() {
-  selectedContainer = selectContainer.querySelector(`.${selectedUnit}-container`);
-  if (selectedContainers) {
-    selectedContainers.addEventListener("click", handleContainerClick);
   }
 }
-  
-  // Add event listeners to the radio inputs
-  const metricInput = selectContainer.querySelector("input[name='unit'][value='metric']");
-  const imperialInput = selectContainer.querySelector("input[name='unit'][value='imperial']");
-  
-  metricInput.addEventListener("change", handleUnitChange);
-  imperialInput.addEventListener("change", handleUnitChange);
-  
-  // Set metric radio as selected by default
-  metricInput.checked = true;
 
-  // Set the selected container initially
-  setSelectedContainer();
+// Function to set the selected container based on the selected unit
+function setSelectedContainer() {
+  selectedContainer = selectContainer.querySelector(`.${selectedUnit}-container`);
+}
 
-  // Set metric cart as default selection
-  handleUnitChange({ target: metricInput });
+function createMetricCart() {
+  const cart = createElement("div", ["metric-cart"]);
+  // ... (add your metric cart content here)
+  const metricElementCart = cart.appendChild(createElement("div", ["metric-element-cart"]));
+  const heightWeightElement = metricElementCart.appendChild(createElement("div", ["metric-height-weight"]));
+  const heightLabel = heightWeightElement.appendChild(createElement("div", ["height-label-element"]));
+  heightLabel.appendChild(createElement("h2", ["height-label"], { textContent: "Height" }));
+  const heightInput = heightLabel.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
 
-  headerSubContainer.appendChild(selectContainer);
-  document.body.appendChild(section);
+  heightInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      calculateMetricResult();
+    }
+  });
+
+  const weightLabel = heightWeightElement.appendChild(createElement("div", ["weight-label-element"]));
+  weightLabel.appendChild(createElement("h2", ["height-label"], { textContent: "Weight" }));
+  const weightInput = weightLabel.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
+
+  weightInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      calculateMetricResult();
+    }
+  });
+
+  const resultDiv = metricElementCart.appendChild(createElement("div", ["result-div"]));
+  const resultElement = resultDiv.appendChild(createElement("div", ["result-content"]));
+  const resultCalculator = resultElement.appendChild(createElement("div",["result-calculator"]));
+  resultCalculator.appendChild(createElement("div", ["result-element"]));
+  resultCalculator.appendChild(createElement("div", ["result-text"], {textContent:"Your BMI suggests you’re a healthy weight. Your ideal weight is between 63.3kgs - 85.2kgs."}))
+  const resultMessageContent = resultDiv.appendChild(createElement("div", ["result-message-welcome"]));
+  resultMessageContent.appendChild(createElement("div", ["result-welcome-content"], { textContent: "Welcome!" }))
+  resultMessageContent.appendChild(createElement("div", ["result-message"], {textContent: "Enter your height and weight and you’ll see your BMI result here"}));
+
+  function calculateMetricResult() {
+    const height = parseInt(heightInput.value);
+    const weight = parseInt(weightInput.value);
+    const result = calculateMetric(height, weight);
+
+     if (!height || !weight) {
+    resultMessageContent.style.display = "block";
+    resultCalculator.style.display = "none";
+  } else {
+    resultMessageContent.style.display = "none";
+    resultElement.textContent = `Your BMI is... ${result}`;
+    resultElement.style.display = "block";
+  }
+  }
+
+  function calculateMetric(height, weight) {
+    const bmi = weight / ((height / 100) ** 2);
+    return bmi.toFixed(1); // Return BMI rounded to 1 decimal place
+  }
+
+  return cart;
+}
+
+
+// Function to create the cart for imperial calculations
+function createImperialCart() {
+  const cart = createElement("div", ["imperial-cart"]);
+  const imperialElementCart = cart.appendChild(createElement("div", ["imperial-element-cart"]));
+  const imperialContent = imperialElementCart.appendChild(createElement("div", ["imperial-content"]));
+  const heightWeightElement = imperialContent.appendChild(createElement("div", ["imperial-height-weight"]));
+  const heightLabel = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
+  heightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Height" }));
+  const heightInput = heightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
+
+  const weightLabel = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
+  weightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Weight" }));
+  const weightInput = weightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
+
+  return cart;
+}
+
+// Add event listeners to the radio inputs
+const metricInput = selectContainer.querySelector("input[name='unit'][value='metric']");
+const imperialInput = selectContainer.querySelector("input[name='unit'][value='imperial']");
+
+metricInput.addEventListener("change", handleUnitChange);
+imperialInput.addEventListener("change", handleUnitChange);
+
+// Set metric radio as selected by default
+metricInput.checked = true;
+
+// Set the selected container initially
+setSelectedContainer();
+
+// Set metric cart as default selection
+handleUnitChange({ target: metricInput });
+
+headerSubContainer.appendChild(selectContainer);
+document.body.appendChild(section);
+
   
   const section2 = createElement('section', ['middle-container']);
   const middleContainerElement = section2.appendChild(createElement('div', ['middle-container-element']));
