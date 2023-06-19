@@ -47,20 +47,22 @@ function handleUnitChange(event) {
   // Perform any necessary actions based on the selected unit
   if (selectedUnit === "metric") {
     // Show metric cart and hide imperial cart
-    console.log("metric selected");
     if (!metricCart) {
       metricCart = createMetricCart();
     }
     metricCart.style.display = "block";
-
+    
     if (imperialCart) {
       imperialCart.style.display = "none";
+      const headerSub = document.querySelector('.header-subheader-container');
+    headerSub.style.height = '484px';
     }
 
     // Append metric cart to the selected container
     if (selectedContainer) {
       selectedContainer.appendChild(metricCart);
     }
+  
   } else if (selectedUnit === "imperial") {
     // Show imperial cart and hide metric cart
     console.log("imperial selected");
@@ -77,6 +79,8 @@ function handleUnitChange(event) {
     if (selectedContainer) {
       selectedContainer.appendChild(imperialCart);
     }
+    const headerSub = document.querySelector('.header-subheader-container');
+    headerSub.style.height = '606px';
   }
 }
 
@@ -90,6 +94,7 @@ function createMetricCart() {
   // ... (add your metric cart content here)
   const metricElementCart = cart.appendChild(createElement("div", ["metric-element-cart"]));
   const heightWeightElement = metricElementCart.appendChild(createElement("div", ["metric-height-weight"]));
+
   const heightLabel = heightWeightElement.appendChild(createElement("div", ["height-label-element"]));
   heightLabel.appendChild(createElement("h2", ["height-label"], { textContent: "Height" }));
   const heightInput = heightLabel.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
@@ -112,25 +117,20 @@ function createMetricCart() {
 
   const resultDiv = metricElementCart.appendChild(createElement("div", ["result-div"]));
   const resultElement = resultDiv.appendChild(createElement("div", ["result-content"]));
-  const resultCalculator = resultElement.appendChild(createElement("div",["result-calculator"]));
-  resultCalculator.appendChild(createElement("div", ["result-element"]));
-  resultCalculator.appendChild(createElement("div", ["result-text"], {textContent:"Your BMI suggests you’re a healthy weight. Your ideal weight is between 63.3kgs - 85.2kgs."}))
+  const resultCalculator =  resultDiv.appendChild(createElement("div",["result-calculator"], {textContent:"Your BMI suggests you’re a healthy weight. Your ideal weight is between 63.3kgs - 85.2kgs."}));
+
   const resultMessageContent = resultDiv.appendChild(createElement("div", ["result-message-welcome"]));
   resultMessageContent.appendChild(createElement("div", ["result-welcome-content"], { textContent: "Welcome!" }))
   resultMessageContent.appendChild(createElement("div", ["result-message"], {textContent: "Enter your height and weight and you’ll see your BMI result here"}));
-
   function calculateMetricResult() {
     const height = parseInt(heightInput.value);
     const weight = parseInt(weightInput.value);
     const result = calculateMetric(height, weight);
 
-     if (!height || !weight) {
-    resultMessageContent.style.display = "block";
-    resultCalculator.style.display = "none";
-  } else {
+     if (height || weight) {
     resultMessageContent.style.display = "none";
     resultElement.textContent = `Your BMI is... ${result}`;
-    resultElement.style.display = "block";
+    resultCalculator.style.display = "block"
   }
   }
 
@@ -147,18 +147,96 @@ function createMetricCart() {
 function createImperialCart() {
   const cart = createElement("div", ["imperial-cart"]);
   const imperialElementCart = cart.appendChild(createElement("div", ["imperial-element-cart"]));
-  const imperialContent = imperialElementCart.appendChild(createElement("div", ["imperial-content"]));
-  const heightWeightElement = imperialContent.appendChild(createElement("div", ["imperial-height-weight"]));
-  const heightLabel = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
-  heightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Height" }));
-  const heightInput = heightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
 
-  const weightLabel = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
+  const imperialContent = imperialElementCart.appendChild(createElement("div", ["imperial-content"]));
+  const heightLabel = imperialContent.appendChild(createElement("div", ["height-label-text"]));
+  heightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Height" }));
+  const acceptInput = imperialContent.appendChild(createElement("div", ["accept-input"]));
+
+  const heightInputContainer = createElement("div", ["input-container"]);
+  const feetInput = heightInputContainer.appendChild(createElement("input", ["height-input"], { type: "", placeholder: "0", min: "1", inputmode: "numeric" }));
+  feetInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      calculateImperialResult();
+    }
+  });
+  heightInputContainer.appendChild(createElement("label", ["input-label"], { textContent: "ft" }));
+  acceptInput.appendChild(heightInputContainer);
+
+  const inchesInputContainer = createElement("div", ["input-container"]);
+  const inchesInput = inchesInputContainer.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
+  inchesInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      calculateImperialResult();
+    }
+  });
+  inchesInputContainer.appendChild(createElement("label", ["input-label"], { textContent: "in" }));
+  acceptInput.appendChild(inchesInputContainer);
+
+  const weightLabel = imperialContent.appendChild(createElement("div", ["height-label-text"]));
   weightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Weight" }));
-  const weightInput = weightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
+  const stonInput = imperialContent.appendChild(createElement("div", ["accept-input"]));
+  const stonesInput = stonInput.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
+  stonesInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      calculateImperialResult();
+    }
+  });
+  stonInput.appendChild(createElement("label", ["inches-label"], { textContent: "st" }));
+
+  const poundsInput = stonInput.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
+  poundsInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      calculateImperialResult();
+    }
+  });
+  stonInput.appendChild(createElement("label", ["inches-label"], { textContent: "lbs" }));
+
+  const resultDiv = imperialElementCart.appendChild(createElement("div", ["imperial-result-div"]));
+  const resultElement = resultDiv.appendChild(createElement("div", ["result-content"], {textContent: "Your BMI is..."}));
+  const resultCalculator = resultDiv.appendChild(createElement("div", ["result-calculator"], {textContent:"Your BMI suggests you're a healthy weight. Your ideal weight is between 63.3kgs - 85.2kgs."}));
+
+  function calculateImperialResult() {
+    const feet = parseFloat(feetInput.value) || 0;
+    const inches = parseFloat(inchesInput.value) || 0;
+    const heightInches = feet * 12 + inches;
+
+    const stones = parseFloat(stonesInput.value) || 0;
+    const pounds = parseFloat(poundsInput.value) || 0;
+    const weightPounds = stones * 14 + pounds;
+
+    // Perform the BMI calculation using the height in inches and weight in pounds
+    const heightInchesSquared = heightInches * heightInches;
+    const bmi = (weightPounds / heightInchesSquared) * 703;
+
+    // Update the result content element with the BMI result
+    resultElement.textContent = `Your BMI is: ${bmi.toFixed(1)}`;
+
+    // Update the result calculator element with the BMI category and ideal weight range
+    resultCalculator.textContent = `Your BMI suggests you're a ${getWeightCategory(bmi)}. Your ideal weight is between ${getIdealWeightRange(heightInches)} lbs.`;
+  }
+
+  function getWeightCategory(bmi) {
+    if (bmi < 18.5) {
+      return "underweight";
+    } else if (bmi >= 18.5 && bmi < 25) {
+      return "healthy weight";
+    } else if (bmi >= 25 && bmi < 30) {
+      return "overweight";
+    } else {
+      return "obese";
+    }
+  }
+
+  function getIdealWeightRange(heightInches) {
+    const lowerRange = 18.5 * (heightInches * heightInches) / 703;
+    const upperRange = 25 * (heightInches * heightInches) / 703;
+    return `${lowerRange.toFixed(1)} - ${upperRange.toFixed(1)}`;
+  }
 
   return cart;
 }
+
 
 // Add event listeners to the radio inputs
 const metricInput = selectContainer.querySelector("input[name='unit'][value='metric']");
