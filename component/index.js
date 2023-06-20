@@ -142,7 +142,6 @@ function createMetricCart() {
   return cart;
 }
 
-
 // Function to create the cart for imperial calculations
 function createImperialCart() {
   const cart = createElement("div", ["imperial-cart"]);
@@ -175,6 +174,7 @@ function createImperialCart() {
 
   const weightLabel = imperialContent.appendChild(createElement("div", ["height-label-text"]));
   weightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Weight" }));
+  
   const stonInput = imperialContent.appendChild(createElement("div", ["accept-input"]));
   const stonesInput = stonInput.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
   stonesInput.addEventListener("keyup", function(event) {
@@ -183,6 +183,7 @@ function createImperialCart() {
     }
   });
   stonInput.appendChild(createElement("label", ["inches-label"], { textContent: "st" }));
+  acceptInput.appendChild(stonInput)
 
   const poundsInput = stonInput.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
   poundsInput.addEventListener("keyup", function(event) {
