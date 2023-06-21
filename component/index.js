@@ -249,7 +249,7 @@ function createMetricCart() {
 
   function calculateMetricResult() {
     const height = parseInt(heightInput.value) || 0;
-    const weight = parseInt(weightInput.value) || 0;
+    const weight = parseInt(weightInput.value) || 0; 
     const result = calculateMetric(height, weight);
 
     if (height || weight) {
@@ -519,93 +519,294 @@ handleUnitChange({ target: metricInput });
 headerSubContainer.appendChild(selectContainer);
 document.body.appendChild(section);
 
-  const section2 = createElement('section', ['middle-container']);
-  const middleContainerElement = section2.appendChild(createElement('div', ['middle-container-element']));
-  middleContainerElement.appendChild(createElement('img', ['manIcon'], { src: "./assets/images/image-man-eating.webp", alt: "man" }));
-  
-  const middleContainerCurve = middleContainerElement.appendChild(createElement('div', ['middle-container-curve']));
-  middleContainerCurve.appendChild(createElement('img', ['curve'], { src: "./assets/images/pattern-curved-line-left.svg", alt: "left" }));
-  middleContainerCurve.appendChild(createElement("div", ['bmi-result'], { textContent: "What your BMI result means" }));
-  middleContainerCurve.appendChild(createElement("div", ["healthy-range"], { textContent: "A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity and type 2 diabetes. Aim for a nutritious diet with reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular physical activity, ideally about 30 minutes daily for five days a week." }));
-  
-  section2.appendChild(middleContainerElement);
-  document.body.appendChild(section2);
-  
-  const section3 = createElement('section', ['fourth-container']);
+const section2 = document.createElement('section');
+section2.classList.add('middle-container');
 
-  const fourthContainerElement = section3.appendChild(createElement('div', ['fourth-container-element']));
-  
-  const healthyEating = fourthContainerElement.appendChild(createElement('div', ['healthy-eating']));
-  healthyEating.appendChild(createElement('img', ['eating-icon'], { src: "./assets/images/icon-eating.svg", alt: "eating" }));
+const middleContainerElement = document.createElement('div');
+middleContainerElement.classList.add('middle-container-element');
+section2.appendChild(middleContainerElement);
 
-  const healthyContainer = healthyEating.appendChild( createElement("div"), ["healthy-container"])
-  healthyContainer.appendChild(createElement('div', ['healthy-title'], { textContent: "Healthy eating" }));
-  healthyContainer.appendChild(createElement('div', ['healthy-status'], { textContent: "Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood." }));
-  
-  const regularHealthCheck = fourthContainerElement.appendChild(createElement('div', ['healthy-health-check']));
-  regularHealthCheck.appendChild(createElement('img', ['exercise-icon'], { src: "./assets/images/icon-exercise.svg", alt: "exercise" }));
+const manIcon = document.createElement('img');
+manIcon.classList.add('manIcon');
+manIcon.src = "./assets/images/image-man-eating.webp";
+manIcon.alt = "man";
+middleContainerElement.appendChild(manIcon);
 
-  const healthCheckElement = regularHealthCheck.appendChild(createElement('div', ['healthy-health-element']));
-  healthCheckElement.appendChild(createElement('div', ['regular-fitness-title'], { textContent: "Regular exercise" }));
-  healthCheckElement.appendChild(createElement('div', ['exercise-fitness-status'], { textContent: "Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity." }));
-  
-  const adequateStatus = fourthContainerElement.appendChild(createElement('div', ['adequate-status']));
-  adequateStatus.appendChild(createElement('img', ['adequate-icon'], { src: "./assets/images/icon-sleep.svg", alt: "sleep" }));
+const middleContainerCurve = document.createElement('div');
+middleContainerCurve.classList.add('middle-container-curve');
+middleContainerElement.appendChild(middleContainerCurve);
 
-  const effectiveCondition = adequateStatus.appendChild(createElement ('div', ['effective-condition']));
-  effectiveCondition.appendChild(createElement('div', ['sufficiently-sleep-status'], { textContent: "Adequate sleep" }));
-  effectiveCondition.appendChild(createElement('div', ['adequate-sleep-status'], { textContent: "Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation." }));
-  
-  section3.appendChild(fourthContainerElement);
-  document.body.appendChild(section3);
+const curveLeft = document.createElement('img');
+curveLeft.classList.add('curve');
+curveLeft.src = "./assets/images/pattern-curved-line-left.svg";
+curveLeft.alt = "left";
+middleContainerCurve.appendChild(curveLeft);
 
-  const section4 = createElement('section', ['last-container']);
-  const lastContainerElement = section4.appendChild(createElement('div', ['last-container-element']))
+const bmiResult = document.createElement('div');
+bmiResult.classList.add('bmi-result');
+bmiResult.textContent = "What your BMI result means";
+middleContainerCurve.appendChild(bmiResult);
 
-  const limitationsBmiStatus = lastContainerElement.appendChild(createElement('div', ['limitation-status-bmi']))
-  limitationsBmiStatus.appendChild(createElement('div', ['limitation-status-header'], {textContent: 'Limitations of BMI'}));
-  limitationsBmiStatus.appendChild(createElement('div', ['limitation-status-element'], {textContent: "Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use."}))
-  limitationsBmiStatus.appendChild(createElement('img', ['line-curve-right'], {src: './assets/images/pattern-curved-line-right.svg', alt: "right"}))
+const healthyRange = document.createElement('div');
+healthyRange.classList.add('healthy-range');
+healthyRange.textContent = "A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity and type 2 diabetes. Aim for a nutritious diet with reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular physical activity, ideally about 30 minutes daily for five days a week.";
+middleContainerCurve.appendChild(healthyRange);
 
-  const gridElement = lastContainerElement.appendChild(createElement('grid', ['grid-container-element']))
+document.body.appendChild(section2);
 
-  const gridContainer = gridElement.appendChild(createElement('div', ['grid-container']))
-  const genderedGridElement = gridContainer.appendChild(createElement('div', ['gendered-grid']))
-  const genderedContainer = genderedGridElement.appendChild(createElement('div', ['gendered-container']))
-  const genderElementImg = genderedContainer.appendChild(createElement('div', ['gender-image']))
-  genderElementImg.appendChild(createElement('img', [], {src: './assets/images/icon-gender.svg', alt: 'gender'}))
-  genderElementImg.appendChild(createElement('h5', ['gender-text'], {textContent: 'Gender'}))
-  genderedContainer.appendChild(createElement('div', ['gender-develop'], {textContent: "The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI."}))
+const section3 = document.createElement('section');
+section3.classList.add('fourth-container');
 
-  const ageGridElement = gridContainer.appendChild(createElement('div', ['age-grid']))
-  const ageContainer = ageGridElement.appendChild(createElement('div', ['age-container']))
-  const imgAgeDevelop = ageContainer.appendChild(createElement('div', ['img-gender-develop']))
-  imgAgeDevelop.appendChild(createElement('img', [], {src: './assets/images/icon-age.svg', alt: 'age'}))
-  imgAgeDevelop.appendChild(createElement('h5', ['age-text'], {textContent: 'Age'}))
-  ageContainer.appendChild(createElement('div', ['age-develop'], {textContent: "In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content."}))
+const fourthContainerElement = document.createElement('div');
+fourthContainerElement.classList.add('fourth-container-element');
+section3.appendChild(fourthContainerElement);
 
-  const musclePregElement = gridElement.appendChild(createElement('div', ['muscle-preg-element']))
-  const gridAgeRace = musclePregElement.appendChild(createElement('div', ['muscle-grid']))
-  const muscleContainer = gridAgeRace.appendChild(createElement('div', ['muscle-container']))
-  const imgMuscleElement = muscleContainer.appendChild(createElement('div', ['img-muscle-element']))
-  imgMuscleElement.appendChild(createElement('img', [], {src: './assets/images/icon-muscle.svg', alt: 'muscle'}))
-  imgMuscleElement.appendChild(createElement('h5', ['muscle-text'], {textContent: 'Muscle'}))
-  muscleContainer.appendChild(createElement('div', ['muscle-develop'], {textContent: "BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat."}))
+const healthyEating = document.createElement('div');
+healthyEating.classList.add('healthy-eating');
+fourthContainerElement.appendChild(healthyEating);
 
-  const pregnancyGridElement = musclePregElement.appendChild(createElement('div', ['pregnancy-grid']))
-  const pregnancyContainer = pregnancyGridElement.appendChild(createElement('div', ['pregnancy-container']))
-  const pregContentElement = pregnancyContainer.appendChild(createElement('div', ['preg-content-element']))
-  pregContentElement.appendChild(createElement('img', [], {src: './assets/images/icon-pregnancy.svg', alt: 'pregnancy'}))
-  pregContentElement.appendChild(createElement('h5', ['pregnancy-text'], {textContent: 'Pregnancy'}))
-  pregnancyContainer.appendChild(createElement('div', ['Pregnancy-develop'], {textContent: "  Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child."}))
- 
-  const raceGridElement = gridElement.appendChild(createElement('div', ['race-grid']))
-  const raceContainer = raceGridElement.appendChild(createElement('div', ['race-container']))
-  const racerContent = raceContainer.appendChild(createElement('div', ['racer-content']))
-  racerContent.appendChild(createElement('img', [], {src: './assets/images/icon-race.svg', alt: 'race'}))
-  racerContent.appendChild(createElement('h5', ['race-text'], {textContent: 'Race'}))
-  raceContainer.appendChild(createElement('div', ['race-develop'], {textContent: " Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or practice nurse."}))
+const eatingIcon = document.createElement('img');
+eatingIcon.classList.add('eating-icon');
+eatingIcon.src = "./assets/images/icon-eating.svg";
+eatingIcon.alt = "eating";
+healthyEating.appendChild(eatingIcon);
 
- 
+const healthyContainer = document.createElement('div');
+healthyContainer.classList.add('healthy-container');
+healthyEating.appendChild(healthyContainer);
 
-  document.body.appendChild(section4);
+const healthyTitle = document.createElement('div');
+healthyTitle.classList.add('healthy-title');
+healthyTitle.textContent = "Healthy eating";
+healthyContainer.appendChild(healthyTitle);
+
+const healthyStatus = document.createElement('div');
+healthyStatus.classList.add('healthy-status');
+healthyStatus.textContent = "Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.";
+healthyContainer.appendChild(healthyStatus);
+
+const regularHealthCheck = document.createElement('div');
+regularHealthCheck.classList.add('healthy-health-check');
+fourthContainerElement.appendChild(regularHealthCheck);
+
+const exerciseIcon = document.createElement('img');
+exerciseIcon.classList.add('exercise-icon');
+exerciseIcon.src = "./assets/images/icon-exercise.svg";
+exerciseIcon.alt = "exercise";
+regularHealthCheck.appendChild(exerciseIcon);
+
+const healthCheckElement = document.createElement('div');
+healthCheckElement.classList.add('healthy-health-element');
+regularHealthCheck.appendChild(healthCheckElement);
+
+const regularFitnessTitle = document.createElement('div');
+regularFitnessTitle.classList.add('regular-fitness-title');
+regularFitnessTitle.textContent = "Regular exercise";
+healthCheckElement.appendChild(regularFitnessTitle);
+
+const exerciseFitnessStatus = document.createElement('div');
+exerciseFitnessStatus.classList.add('exercise-fitness-status');
+exerciseFitnessStatus.textContent = "Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.";
+healthCheckElement.appendChild(exerciseFitnessStatus);
+
+const adequateStatus = document.createElement('div');
+adequateStatus.classList.add('adequate-status');
+fourthContainerElement.appendChild(adequateStatus);
+
+const adequateIcon = document.createElement('img');
+adequateIcon.classList.add('adequate-icon');
+adequateIcon.src = "./assets/images/icon-sleep.svg";
+adequateIcon.alt = "sleep";
+adequateStatus.appendChild(adequateIcon);
+
+const effectiveCondition = document.createElement('div');
+effectiveCondition.classList.add('effective-condition');
+adequateStatus.appendChild(effectiveCondition);
+
+const sufficientlySleepStatus = document.createElement('div');
+sufficientlySleepStatus.classList.add('sufficiently-sleep-status');
+sufficientlySleepStatus.textContent = "Adequate sleep";
+effectiveCondition.appendChild(sufficientlySleepStatus);
+
+const adequateSleepStatus = document.createElement('div');
+adequateSleepStatus.classList.add('adequate-sleep-status');
+adequateSleepStatus.textContent = "Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.";
+effectiveCondition.appendChild(adequateSleepStatus);
+
+document.body.appendChild(section3);
+
+  const section4 = document.createElement('section');
+section4.classList.add('last-container');
+
+const lastContainerElement = document.createElement('div');
+lastContainerElement.classList.add('last-container-element');
+section4.appendChild(lastContainerElement);
+
+const limitationsBmiStatus = document.createElement('div');
+limitationsBmiStatus.classList.add('limitation-status-bmi');
+lastContainerElement.appendChild(limitationsBmiStatus);
+
+const limitationStatusHeader = document.createElement('div');
+limitationStatusHeader.classList.add('limitation-status-header');
+limitationStatusHeader.textContent = 'Limitations of BMI';
+limitationsBmiStatus.appendChild(limitationStatusHeader);
+
+const limitationStatusElement = document.createElement('div');
+limitationStatusElement.classList.add('limitation-status-element');
+limitationStatusElement.textContent = 'Although BMI is often a practical indicator of healthy weight, it is not suited for every person. Specific groups should carefully consider their BMI outcomes, and in certain cases, the measurement may not be beneficial to use.';
+limitationsBmiStatus.appendChild(limitationStatusElement);
+
+const lineCurveRight = document.createElement('img');
+lineCurveRight.classList.add('line-curve-right');
+lineCurveRight.src = './assets/images/pattern-curved-line-right.svg';
+lineCurveRight.alt = 'right';
+limitationsBmiStatus.appendChild(lineCurveRight);
+
+const gridElement = document.createElement('grid');
+gridElement.classList.add('grid-container-element');
+lastContainerElement.appendChild(gridElement);
+
+const gridContainer = document.createElement('div');
+gridContainer.classList.add('grid-container');
+gridElement.appendChild(gridContainer);
+
+const genderedGridElement = document.createElement('div');
+genderedGridElement.classList.add('gendered-grid');
+gridContainer.appendChild(genderedGridElement);
+
+const genderedContainer = document.createElement('div');
+genderedContainer.classList.add('gendered-container');
+genderedGridElement.appendChild(genderedContainer);
+
+const genderElementImg = document.createElement('div');
+genderElementImg.classList.add('gender-image');
+genderedContainer.appendChild(genderElementImg);
+
+const genderImage = document.createElement('img');
+genderImage.src = './assets/images/icon-gender.svg';
+genderImage.alt = 'gender';
+genderElementImg.appendChild(genderImage);
+
+const genderText = document.createElement('h5');
+genderText.classList.add('gender-text');
+genderText.textContent = 'Gender';
+genderElementImg.appendChild(genderText);
+
+const genderDevelop = document.createElement('div');
+genderDevelop.classList.add('gender-develop');
+genderDevelop.textContent = "The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI.";
+genderedContainer.appendChild(genderDevelop);
+
+const ageGridElement = document.createElement('div');
+ageGridElement.classList.add('age-grid');
+gridContainer.appendChild(ageGridElement);
+
+const ageContainer = document.createElement('div');
+ageContainer.classList.add('age-container');
+ageGridElement.appendChild(ageContainer);
+
+const imgAgeDevelop = document.createElement('div');
+imgAgeDevelop.classList.add('img-gender-develop');
+ageContainer.appendChild(imgAgeDevelop);
+
+const ageImage = document.createElement('img');
+ageImage.src = './assets/images/icon-age.svg';
+ageImage.alt = 'age';
+imgAgeDevelop.appendChild(ageImage);
+
+const ageText = document.createElement('h5');
+ageText.classList.add('age-text');
+ageText.textContent = 'Age';
+imgAgeDevelop.appendChild(ageText);
+
+const ageDevelop = document.createElement('div');
+ageDevelop.classList.add('age-develop');
+ageDevelop.textContent = "In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content.";
+ageContainer.appendChild(ageDevelop);
+
+const musclePregElement = document.createElement('div');
+musclePregElement.classList.add('muscle-preg-element');
+gridElement.appendChild(musclePregElement);
+
+const gridAgeRace = document.createElement('div');
+gridAgeRace.classList.add('muscle-grid');
+musclePregElement.appendChild(gridAgeRace);
+
+const muscleContainer = document.createElement('div');
+muscleContainer.classList.add('muscle-container');
+gridAgeRace.appendChild(muscleContainer);
+
+const imgMuscleElement = document.createElement('div');
+imgMuscleElement.classList.add('img-muscle-element');
+muscleContainer.appendChild(imgMuscleElement);
+
+const muscleImage = document.createElement('img');
+muscleImage.src = './assets/images/icon-muscle.svg';
+muscleImage.alt = 'muscle';
+imgMuscleElement.appendChild(muscleImage);
+
+const muscleText = document.createElement('h5');
+muscleText.classList.add('muscle-text');
+muscleText.textContent = 'Muscle';
+imgMuscleElement.appendChild(muscleText);
+
+const muscleDevelop = document.createElement('div');
+muscleDevelop.classList.add('muscle-develop');
+muscleDevelop.textContent = "BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat.";
+muscleContainer.appendChild(muscleDevelop);
+
+const pregnancyGridElement = document.createElement('div');
+pregnancyGridElement.classList.add('pregnancy-grid');
+musclePregElement.appendChild(pregnancyGridElement);
+
+const pregnancyContainer = document.createElement('div');
+pregnancyContainer.classList.add('pregnancy-container');
+pregnancyGridElement.appendChild(pregnancyContainer);
+
+const pregContentElement = document.createElement('div');
+pregContentElement.classList.add('preg-content-element');
+pregnancyContainer.appendChild(pregContentElement);
+
+const pregnancyImage = document.createElement('img');
+pregnancyImage.src = './assets/images/icon-pregnancy.svg';
+pregnancyImage.alt = 'pregnancy';
+pregContentElement.appendChild(pregnancyImage);
+
+const pregnancyText = document.createElement('h5');
+pregnancyText.classList.add('pregnancy-text');
+pregnancyText.textContent = 'Pregnancy';
+pregContentElement.appendChild(pregnancyText);
+
+const pregnancyDevelop = document.createElement('div');
+pregnancyDevelop.classList.add('Pregnancy-develop');
+pregnancyDevelop.textContent = "Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimize health risks for both mother and child.";
+pregnancyContainer.appendChild(pregnancyDevelop);
+
+const raceGridElement = document.createElement('div');
+raceGridElement.classList.add('race-grid');
+gridElement.appendChild(raceGridElement);
+
+const raceContainer = document.createElement('div');
+raceContainer.classList.add('race-container');
+raceGridElement.appendChild(raceContainer);
+
+const racerContent = document.createElement('div');
+racerContent.classList.add('racer-content');
+raceContainer.appendChild(racerContent);
+
+const raceImage = document.createElement('img');
+raceImage.src = './assets/images/icon-race.svg';
+raceImage.alt = 'race';
+racerContent.appendChild(raceImage);
+
+const raceText = document.createElement('h5');
+raceText.classList.add('race-text');
+raceText.textContent = 'Race';
+racerContent.appendChild(raceText);
+
+const raceDevelop = document.createElement('div');
+raceDevelop.classList.add('race-develop');
+raceDevelop.textContent = "Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or practice nurse.";
+raceContainer.appendChild(raceDevelop);
+
+document.body.appendChild(section4);
