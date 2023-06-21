@@ -8,7 +8,7 @@ body{
     font-family: 'Inter', sans-serif;
     font-style: normal;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .header{
@@ -717,7 +717,7 @@ body{
     .middle-container{
         width: 100%;
         height: 380px;
-        margin-top: 7rem;
+        margin-top: 12rem;
     }
 
     .middle-container-element{
@@ -804,7 +804,7 @@ body{
         position: relative;
         top: 15rem;
         width: 100%;
-        height: 100%;
+        height: 1040px;
         margin: 0 auto;
     }
 
@@ -814,7 +814,7 @@ body{
         justify-content: center;
         align-items: center;
         width: 686px;
-        height: 963px;
+        height: 975px;
         margin:  0 auto;
     }
 
@@ -827,7 +827,6 @@ body{
         left: 0;
         width: 686px;
         height: 963px;
-        border: 1px solid red;
 }
 
     .grid-container{
@@ -842,22 +841,30 @@ body{
     .gendered-grid{
         left: 0;
         top: 0;
+        width: 335.5px;
+        height: 232px;
     }
 
     .age-grid{
         left: 0;
         top: 0;
+        width: 335.5px;
+        height: 232px;
     }
 
     .muscle-grid,
     .pregnancy-grid{
         left: 0;
         top: 0;
+        width: 335.5px;
+        height: 232px;
     }
 
     .race-grid{
         left: 0;
         top: 1rem;
+        width: 335.5px;
+        height: 232px;
     }
 
    .muscle-preg-element{
@@ -869,4 +876,344 @@ body{
     width: 686px;
     height: 256px;
    }
+}
+
+@media screen and (max-width: 480px) and (min-width: 280px) {
+    .header{
+        width: 100%;
+    }
+
+    .logo{
+        display: flex;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .header-container{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .header-element{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 327px;
+        height: 327px;
+        margin-left: -5.5rem;
+    }
+
+    .header-subheader-container{
+        position: relative;
+        top: 5rem;
+        margin: 0 auto;
+        width: 328px;
+        height: 649px;
+    }
+
+    .header-element-container{
+        /* position: relative;
+        top: -6rem; */
+        width: 328px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .header-element-container h1{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        /* margin: 0 auto; */
+        font-size: 48px;
+        width: 327px;
+        height: 159px;
+        align-items: center;
+    }
+
+    .header-element-container p{
+        position: relative;
+        top: 24px;
+        margin: 0 auto;
+        font-size: 16px;
+        width: 327px;
+        height: 144px;
+    }
+
+    .header-sub-container{
+        width: 300px;
+        height: 400px;
+        margin:32px 32px 32px 32px;
+    }
+
+    .radio-container{
+        display: flex;
+        gap: 2px;
+        width: 300px;
+    }
+
+    .metric-cart{
+        width: 320px;
+    }
+
+    .metric-height-weight{
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        width: 280px;
+        height: 212px;
+    }
+
+    .metric-element-cart{
+        width: 320px;
+    }
+
+    .height-input{
+        width: 280px;
+    }
+
+    .result-div{
+        width: 280px;
+        height: 257px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .result-welcome-content{
+        width: 200px;
+    }
+
+    .result-message-welcome{
+        width: 220px;
+    }
+
+    .result-message{
+        width: 200px;
+    }
+
+    .result-content{
+       
+        width: 200px;
+    }
+
+    .imperial-cart{
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+        height: 212px;
+    }
+
+    .height-input{
+        width: 132px;
+        height: 69px;
+    }
+
+    .input-label{
+        left: 6rem;
+    }
+
+    .imperial-result-div{
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+        height: 257px;
+        background: linear-gradient(90deg, #345FF7 0%, #587DFF 100%);
+        border-radius: 16px;
+    }
+
+    .middle-container{
+        width: 375px;
+        height: 1087px;
+    }
+
+    .middle-container-element{
+        width: 375px;
+        height: 74px;
+        margin-top: 15rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .manIcon{
+        width: 375px;
+        height: 354.39px;
+    }
+
+    .curve,
+    .line-curve-right{
+        display: none !important;
+    }
+
+    .middle-container-curve{
+        width: 328px;
+        height: 357px;
+        margin: 0 auto;
+    }
+
+    .bmi-result{
+        font-size: 32px;
+        width: 328px;
+    }
+
+    .healthy-range{
+        width: 328px;
+        height: 228px;
+    }
+
+    .fourth-container{
+        width: 375px;
+        height: 680px;
+    }
+    .fourth-container-element{
+        width: 328px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 35px 20px 10px 24px;
+    }
+
+    .healthy-eating,
+    .healthy-health-check,
+    .adequate-status{
+        margin: 0 auto;
+        width: 327px;
+    }
+
+    .healthy-container{
+        width: 320px;
+    }
+
+    .healthy-status,
+    .exercise-fitness-status,
+    .adequate-sleep-status{
+        width: 320px;
+    }
+
+    .last-container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 17rem;
+        width: 375px;
+        height: 1550px;
+    }
+
+    .last-container-element{
+        display: flex;
+        flex-direction: column;
+        width: 328px;
+        margin: 0 auto;
+    }
+
+    .limitation-status-bmi{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 328px;
+    }
+
+    .limitation-status-header{
+        width: 300px;
+        font-size: 32px;
+    }
+
+    .limitation-status-element{
+        width: 320px;
+    }
+
+    .grid-container-element{
+        display: flex;
+        flex-direction: column;
+        margin-top: 5rem;
+        width: 328px;
+        right: 0;
+    }
+
+    .grid-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 320px;
+    }
+
+    .race-grid{
+        left: 0;
+        top: 1rem;
+        width: 328px;
+        height: 250px;
+    }
+
+    .race-container{
+        width: 275px;
+        height: 170px;
+    }
+
+    .age-grid{
+        width: 320px;
+        height: 216px;
+        left: 0;
+    }
+
+    .age-container{
+        top: 0;
+        width: 275px;
+        height: 170px;
+    }
+
+    .gendered-grid{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 328px;
+        left: 0;
+        top: 3rem;
+    }
+
+    .gendered-container{
+        width: 275px;
+        height: 183px;
+    }
+
+    .muscle-preg-element{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 5rem;
+    }
+
+    .muscle-grid{
+        top: 0;
+        left: 0;
+        width: 320px;
+        height: 216px;
+    }
+
+    .muscle-container{
+        align-items: center;
+        width: 275px;
+        height: 170px;
+    }
+
+    .pregnancy-grid{
+        top: 0;
+        left: 0;
+        width: 328px;
+    }
+
 }

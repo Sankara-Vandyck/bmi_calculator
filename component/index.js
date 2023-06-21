@@ -341,20 +341,6 @@ function createImperialCart() {
   inchesInputContainer.classList.add("input-container");
   acceptInput.appendChild(inchesInputContainer);
 
-<<<<<<< HEAD
-  const weightLabel = imperialContent.appendChild(createElement("div", ["height-label-text"]));
-  weightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Weight" }));
-  
-  const stonInput = imperialContent.appendChild(createElement("div", ["accept-input"]));
-  const stonesInput = stonInput.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
-  stonesInput.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-      calculateImperialResult();
-    }
-  });
-  stonInput.appendChild(createElement("label", ["inches-label"], { textContent: "st" }));
-  acceptInput.appendChild(stonInput)
-=======
   const inchesInput = document.createElement("input");
   inchesInput.classList.add("height-input");
   inchesInput.type = "number";
@@ -367,7 +353,6 @@ function createImperialCart() {
       inchesInput.value = '';
     }
   });
->>>>>>> 4d46b204714cdcd24826e02d6a042dfee7911317
 
   const inchesLabel = document.createElement("label");
   inchesLabel.classList.add("input-label");
