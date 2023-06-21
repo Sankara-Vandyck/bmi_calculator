@@ -1250,7 +1250,7 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 38px;
         width: 320px;
     }
 
@@ -1299,7 +1299,7 @@ body{
         align-items: center;
         justify-content: center;
         gap: 1rem;
-        margin-top: 5rem;
+        margin-top: 2.5rem;
     }
 
     .muscle-grid{
@@ -1326,8 +1326,9 @@ body{
     .muscle-develop,
     .Pregnancy-develop,
     .race-develop{
-    font-size: 12px;
-   
+    font-size: 16px;
+    width: 279px;
+    height: 110px;
 }
 
 
