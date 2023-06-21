@@ -67,6 +67,8 @@ const createElement = (tag, classNames = [], attributes = {}) => {
   metricRadioInput.name = 'unit';
   metricRadioInput.value = 'metric';
   metricContainer.appendChild(metricRadioInput);
+
+ 
   
   const metricRadioLabel = document.createElement('label');
   metricRadioLabel.classList.add('metric-radio-label');
@@ -167,7 +169,7 @@ function createMetricCart() {
   heightLabel.appendChild(heightHeading);
 
   const heightInput = document.createElement("input");
-  heightInput.classList.add("height-input");
+  heightInput.classList.add("metric-height-input");
   heightInput.type = "number";
   heightInput.placeholder = "0";
   heightInput.min = "1";
@@ -197,7 +199,7 @@ function createMetricCart() {
   weightLabel.appendChild(weightHeading);
 
   const weightInput = document.createElement("input");
-  weightInput.classList.add("height-input");
+  weightInput.classList.add("metric-height-input");
   weightInput.type = "number";
   weightInput.placeholder = "0";
   weightInput.min = "1";
@@ -320,7 +322,7 @@ function createImperialCart() {
   acceptInput.appendChild(heightInputContainer);
 
   const feetInput = document.createElement("input");
-  feetInput.classList.add("height-input");
+  feetInput.classList.add("imperial-height-input");
   feetInput.type = "number";
   feetInput.placeholder = "0";
   feetInput.min = "1";
@@ -342,7 +344,7 @@ function createImperialCart() {
   acceptInput.appendChild(inchesInputContainer);
 
   const inchesInput = document.createElement("input");
-  inchesInput.classList.add("height-input");
+  inchesInput.classList.add("imperial-height-input");
   inchesInput.type = "number";
   inchesInput.placeholder = "0";
   inchesInput.min = "1";
@@ -379,7 +381,7 @@ function createImperialCart() {
   acceptWeight.appendChild(stonesInputContainer);
 
   const stonesInput = document.createElement("input");
-  stonesInput.classList.add("height-input");
+  stonesInput.classList.add("imperial-height-input");
   stonesInput.type = "number";
   stonesInput.placeholder = "0";
   stonesInput.min = "1";
@@ -401,7 +403,7 @@ function createImperialCart() {
   acceptWeight.appendChild(poundsInputContainer);
 
   const poundsInput = document.createElement("input");
-  poundsInput.classList.add("height-input");
+  poundsInput.classList.add("imperial-height-input");
   poundsInput.type = "number";
   poundsInput.placeholder = "0";
   poundsInput.min = "1";
@@ -570,33 +572,38 @@ document.body.appendChild(section);
   const gridContainer = gridElement.appendChild(createElement('div', ['grid-container']))
   const genderedGridElement = gridContainer.appendChild(createElement('div', ['gendered-grid']))
   const genderedContainer = genderedGridElement.appendChild(createElement('div', ['gendered-container']))
-  genderedContainer.appendChild(createElement('img', [], {src: './assets/images/icon-gender.svg', alt: 'gender'}))
-  genderedContainer.appendChild(createElement('h5', ['gender-text'], {textContent: 'Gender'}))
+  const genderElementImg = genderedContainer.appendChild(createElement('div', ['gender-image']))
+  genderElementImg.appendChild(createElement('img', [], {src: './assets/images/icon-gender.svg', alt: 'gender'}))
+  genderElementImg.appendChild(createElement('h5', ['gender-text'], {textContent: 'Gender'}))
   genderedContainer.appendChild(createElement('div', ['gender-develop'], {textContent: "The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI."}))
 
   const ageGridElement = gridContainer.appendChild(createElement('div', ['age-grid']))
   const ageContainer = ageGridElement.appendChild(createElement('div', ['age-container']))
-  ageContainer.appendChild(createElement('img', [], {src: './assets/images/icon-age.svg', alt: 'age'}))
-  ageContainer.appendChild(createElement('h5', ['age-text'], {textContent: 'Age'}))
+  const imgAgeDevelop = ageContainer.appendChild(createElement('div', ['img-gender-develop']))
+  imgAgeDevelop.appendChild(createElement('img', [], {src: './assets/images/icon-age.svg', alt: 'age'}))
+  imgAgeDevelop.appendChild(createElement('h5', ['age-text'], {textContent: 'Age'}))
   ageContainer.appendChild(createElement('div', ['age-develop'], {textContent: "In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content."}))
 
   const musclePregElement = gridElement.appendChild(createElement('div', ['muscle-preg-element']))
   const gridAgeRace = musclePregElement.appendChild(createElement('div', ['muscle-grid']))
   const muscleContainer = gridAgeRace.appendChild(createElement('div', ['muscle-container']))
-  muscleContainer.appendChild(createElement('img', [], {src: './assets/images/icon-muscle.svg', alt: 'muscle'}))
-  muscleContainer.appendChild(createElement('h5', ['muscle-text'], {textContent: 'Muscle'}))
+  const imgMuscleElement = muscleContainer.appendChild(createElement('div', ['img-muscle-element']))
+  imgMuscleElement.appendChild(createElement('img', [], {src: './assets/images/icon-muscle.svg', alt: 'muscle'}))
+  imgMuscleElement.appendChild(createElement('h5', ['muscle-text'], {textContent: 'Muscle'}))
   muscleContainer.appendChild(createElement('div', ['muscle-develop'], {textContent: "BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat."}))
 
   const pregnancyGridElement = musclePregElement.appendChild(createElement('div', ['pregnancy-grid']))
   const pregnancyContainer = pregnancyGridElement.appendChild(createElement('div', ['pregnancy-container']))
-  pregnancyContainer.appendChild(createElement('img', [], {src: './assets/images/icon-pregnancy.svg', alt: 'pregnancy'}))
-  pregnancyContainer.appendChild(createElement('h5', ['pregnancy-text'], {textContent: 'Pregnancy'}))
+  const pregContentElement = pregnancyContainer.appendChild(createElement('div', ['preg-content-element']))
+  pregContentElement.appendChild(createElement('img', [], {src: './assets/images/icon-pregnancy.svg', alt: 'pregnancy'}))
+  pregContentElement.appendChild(createElement('h5', ['pregnancy-text'], {textContent: 'Pregnancy'}))
   pregnancyContainer.appendChild(createElement('div', ['Pregnancy-develop'], {textContent: "  Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child."}))
  
   const raceGridElement = gridElement.appendChild(createElement('div', ['race-grid']))
   const raceContainer = raceGridElement.appendChild(createElement('div', ['race-container']))
-  raceContainer.appendChild(createElement('img', [], {src: './assets/images/icon-race.svg', alt: 'race'}))
-  raceContainer.appendChild(createElement('h5', ['race-text'], {textContent: 'Race'}))
+  const racerContent = raceContainer.appendChild(createElement('div', ['racer-content']))
+  racerContent.appendChild(createElement('img', [], {src: './assets/images/icon-race.svg', alt: 'race'}))
+  racerContent.appendChild(createElement('h5', ['race-text'], {textContent: 'Race'}))
   raceContainer.appendChild(createElement('div', ['race-develop'], {textContent: " Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or practice nurse."}))
 
  

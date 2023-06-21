@@ -98,18 +98,16 @@ body{
 .radio-input{
     width: 31px;
     height: 31px;
-    
+    cursor: pointer;
 }
 
-.radio-input:hover{
-    cursor: pointer;
-    border-color: #345FF6;
-}
+
 
 .metric-radio-input{
-    top: 2px;
     width: 31px;
     height: 31px;
+    border: 1px solid #D8E2E7;
+    cursor: pointer;
 }
 
  .imperial-container{
@@ -117,7 +115,6 @@ body{
     align-items: center;
     width: 140px;
     height: 35px;
-    /* background: #c4e825; */
  }
 
  .metric-container{
@@ -139,19 +136,16 @@ body{
 
 .radio-container{
     display: flex;
-    /* background: #40e907; */
     margin-top: 2.5rem;
     gap: 7rem;
     width: 500px;
     height: 40px;
-    /* justify-content: space-between; */
 }
 
 .heightLabel{
     display: flex;
     width: 500px;
     height: 120px;
-    /* background: #e93407; */
 }
 
 .middle-container{
@@ -233,7 +227,6 @@ body{
 .healthy-title, 
 .regular-fitness-title, 
 .sufficiently-sleep-status{
-    /* margin-top: 2rem; */
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
@@ -244,7 +237,6 @@ body{
 .healthy-status, 
 .exercise-fitness-status, 
 .adequate-sleep-status{
-    /* margin-top: 3rem; */
     width: 365px;
     height: 72px;
     font-weight: 400;
@@ -316,55 +308,65 @@ body{
     border-radius: 16px;
 }
 
-.gendered-container,
-.muscle-container,
-.race-container{
-    margin: 32px 32px 32px 32px;
+.gender-image{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 301px;
+    height: 32px;
 }
 
-.gender-text, 
-.muscle-text{
-    position: relative;
-    width: 100px;
-    top: -1.7rem;
-    left: 3.5rem;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: -0.05em;
-    color: #253347;
-    order: 1;
-    flex-grow: 1;
-}
-
-.age-text, 
-.race-text, 
-.pregnancy-text{
-    position: relative;
-    top: -2rem;
-    left: 3.5rem;
-    width: 100px;
-    height: 24px;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: -0.05em;
-    color: #253347;
-    order: 1;
-    flex-grow: 1;
+.img-gender-develop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 301px;
+    height: 32px;
 }
 
 .gender-develop,
+.age-develop,
 .muscle-develop,
-.race-develop,
-.Pregnancy-develop{
-    /* margin-top: 0.2rem; */
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    color: #5E6E85;
-    order: 1;
-    align-self: stretch;
+.Pregnancy-develop,
+.race-develop{
+    padding-top: 16px;
+}
+
+.img-muscle-element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 301px;
+    height: 32px;
+   
+}
+
+.preg-content-element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 301px;
+    height: 32px;
+    
+}
+
+.racer-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    width: 301px;
+    height: 32px;
+  
 }
 
 .muscle-grid{
@@ -389,12 +391,21 @@ body{
     border-radius: 16px;
 }
 
-.age-container, .pregnancy-container{
-    margin: 24px 32px 32px 32px;
+
+.pregnancy-container,
+.age-container,
+.race-container,
+.muscle-container{
+    padding: 32px;
 }
 
-.age-develop{
-    position: relative;
+
+
+.gender-develop,
+.age-develop,
+.muscle-develop,
+.Pregnancy-develop,
+.race-develop{
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
@@ -431,12 +442,26 @@ body{
    
 }
 
-.height-input{
+.metric-height-input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 24px;
+    width: 238px;
+    height: 69px;
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
     letter-spacing: -0.05em;
     color: #253347;
+    background: #FFFFFF;
+    border: 1px solid #D8E2E7;
+    border-radius: 12px;
+}
+
+.metric-height-input:hover{
+    border: 1px solid #345FF6;
+    cursor: pointer;
 }
 
 .metric-element-cart{
@@ -510,8 +535,14 @@ body{
     border-radius: 12px;
 }
   
-.height-input::-webkit-outer-spin-button,
-.height-input::-webkit-inner-spin-button{
+.metric-height-input::-webkit-outer-spin-button,
+.metric-height-input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.imperail-height-input::-webkit-outer-spin-button,
+.imperial-height-input::-webkit-inner-spin-button{
     -webkit-appearance: none;
     margin: 0;
 }
@@ -581,17 +612,28 @@ body{
     color: #5E6E85;
 }
 
-.height-input{
+.imperial-height-input{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 20px 24px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.05em;
+    color: #253347;
     gap: 24px;
     width: 238px;
     height: 69px;
     background: #FFFFFF;
     border: 1px solid #D8E2E7;
     border-radius: 12px;
+    
+}
+
+.imperial-height-input:hover{
+    border: 1px solid #345FF6;
+    cursor: pointer;
 }
 
 .result-message-welcome{
@@ -884,11 +926,13 @@ body{
     }
 
     .logo{
+        position: relative;
         display: flex;
         width: 36px;
         height: 36px;
         align-items: center;
         justify-content: center;
+        top: -2rem;
         margin: 0 auto;
     }
 
@@ -911,15 +955,13 @@ body{
 
     .header-subheader-container{
         position: relative;
-        top: 5rem;
+        top: 10rem;
         margin: 0 auto;
         width: 328px;
         height: 649px;
     }
 
     .header-element-container{
-        /* position: relative;
-        top: -6rem; */
         width: 328px;
         display: flex;
         justify-content: center;
@@ -933,7 +975,6 @@ body{
         display: flex;
         text-align: center;
         justify-content: center;
-        /* margin: 0 auto; */
         font-size: 48px;
         width: 327px;
         height: 159px;
@@ -950,6 +991,8 @@ body{
     }
 
     .header-sub-container{
+        position: relative;
+        left: -1rem;
         width: 300px;
         height: 400px;
         margin:32px 32px 32px 32px;
@@ -962,7 +1005,7 @@ body{
     }
 
     .metric-cart{
-        width: 320px;
+        width: 300px;
     }
 
     .metric-height-weight{
@@ -974,14 +1017,15 @@ body{
     }
 
     .metric-element-cart{
-        width: 320px;
+        width: 300px;
     }
 
-    .height-input{
+    .imperial-height-input{
         width: 280px;
     }
 
-    .result-div{
+    .result-div,
+    .result-content{
         width: 280px;
         height: 257px;
         border-radius: 16px;
@@ -994,8 +1038,25 @@ body{
         width: 200px;
     }
 
+    
+    .result-suggest{
+        display: flex;
+        margin-top: -7rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 202px;
+        height: 110px;
+    }
+
     .result-message-welcome{
-        width: 220px;
+        display: flex;
+        margin-top: -15rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 202px;
+        height: 110px;
     }
 
     .result-message{
@@ -1014,13 +1075,38 @@ body{
         height: 212px;
     }
 
-    .height-input{
+    .imperial-height-input{
         width: 132px;
         height: 69px;
     }
 
+    .metric-height-input{
+        width: 280px;
+        height: 69px;
+    }
+
+    .imperial-label{
+        width: 50px;
+    }
+
+    .height-label-text{
+        width: 280px;
+    }
+
     .input-label{
         left: 6rem;
+    }
+
+    .accept-input{
+        width: 180px;
+    }
+
+    .imperial-content{
+        width: 300px;
+    }
+
+    .imperial-element-cart{
+        width: 280px;
     }
 
     .imperial-result-div{
@@ -1033,20 +1119,23 @@ body{
     }
 
     .middle-container{
-        width: 375px;
-        height: 1087px;
+        position: relative;
+        top: 30rem;
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+        height: 135px;
     }
 
     .middle-container-element{
-        width: 375px;
+        width: 350px;
         height: 74px;
-        margin-top: 15rem;
         display: flex;
         flex-direction: column;
     }
 
     .manIcon{
-        width: 375px;
+        width: 345px;
         height: 354.39px;
     }
 
@@ -1057,7 +1146,7 @@ body{
 
     .middle-container-curve{
         width: 328px;
-        height: 357px;
+        height: 370px;
         margin: 0 auto;
     }
 
@@ -1068,12 +1157,15 @@ body{
 
     .healthy-range{
         width: 328px;
-        height: 228px;
+        height: 240px;
     }
 
     .fourth-container{
-        width: 375px;
-        height: 680px;
+        position: relative;
+        top: 76rem;
+        width: 358px;
+        height: 715px;
+        margin: 0 auto;
     }
     .fourth-container-element{
         width: 328px;
@@ -1082,7 +1174,19 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 35px 20px 10px 24px;
+        margin: 40px 10px 9px 25px;
+    }
+
+    .healthy-title,
+    .regular-fitness-title,
+    .sufficiently-sleep-status{
+        margin-top: 1rem;
+    }
+
+    .healthy-status,
+    .exercise-fitness-status,
+    .adequate-sleep-status{
+        margin-top: 1rem;
     }
 
     .healthy-eating,
@@ -1105,8 +1209,8 @@ body{
     .last-container{
         display: flex;
         flex-direction: column;
-        margin-top: 17rem;
-        width: 375px;
+        margin-top: 80rem;
+        /* width: 350px; */
         height: 1550px;
     }
 
@@ -1131,12 +1235,12 @@ body{
 
     .limitation-status-element{
         width: 320px;
+        height: 150px;
     }
 
     .grid-container-element{
         display: flex;
         flex-direction: column;
-        margin-top: 5rem;
         width: 328px;
         right: 0;
     }
@@ -1159,7 +1263,7 @@ body{
 
     .race-container{
         width: 275px;
-        height: 170px;
+        height: 200px;
     }
 
     .age-grid{
@@ -1186,6 +1290,7 @@ body{
     .gendered-container{
         width: 275px;
         height: 183px;
+        /* padding: 0; */
     }
 
     .muscle-preg-element{
@@ -1215,5 +1320,15 @@ body{
         left: 0;
         width: 328px;
     }
+
+    .gender-develop,
+    .age-develop,
+    .muscle-develop,
+    .Pregnancy-develop,
+    .race-develop{
+    font-size: 12px;
+   
+}
+
 
 }
