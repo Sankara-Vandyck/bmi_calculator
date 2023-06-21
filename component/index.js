@@ -8,32 +8,88 @@ const createElement = (tag, classNames = [], attributes = {}) => {
     return element;
   };
 
-  const section = createElement('section', ['header']);
-  const headerContainer = section.appendChild(createElement("div", ["header-container"]));
-  const headerElement = headerContainer.appendChild(createElement("div", ["header-element"]));
-  const logo = headerElement.appendChild(createElement("img", ["logo"], { src: "./assets/images/logo.svg", alt: "logo" }));
-  const headerElementContainer = headerElement.appendChild(createElement("div", ["header-element-container"]));
-  headerElementContainer.appendChild(createElement("h1", [], { textContent: "Body Mass Index Calculator" }));
-  headerElementContainer.appendChild(createElement("p", [], { textContent: "Better understand your weight in relation to your height using our body mass index (BMI) calculator. While BMI is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and well-being." }));
+  const section = document.createElement('section');
+  section.classList.add('header');
   
-  const headerSubheaderContainer = createElement("div", ["header-subheader-container"]);
-  const headerSubContainer = headerSubheaderContainer.appendChild(createElement("div", ["header-sub-container"]));
-  headerSubContainer.appendChild(createElement("h2", [], { textContent: "Enter your details below" }));
+  const headerContainer = document.createElement('div');
+  headerContainer.classList.add('header-container');
+  section.appendChild(headerContainer);
+  
+  const headerElement = document.createElement('div');
+  headerElement.classList.add('header-element');
+  headerContainer.appendChild(headerElement);
+  
+  const logo = document.createElement('img');
+  logo.classList.add('logo');
+  logo.src = './assets/images/logo.svg';
+  logo.alt = 'logo';
+  headerElement.appendChild(logo);
+  
+  const headerElementContainer = document.createElement('div');
+  headerElementContainer.classList.add('header-element-container');
+  headerElement.appendChild(headerElementContainer);
+  
+  const h1 = document.createElement('h1');
+  h1.textContent = 'Body Mass Index Calculator';
+  headerElementContainer.appendChild(h1);
+  
+  const p = document.createElement('p');
+  p.textContent = 'Better understand your weight in relation to your height using our body mass index (BMI) calculator. While BMI is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and well-being.';
+  headerElementContainer.appendChild(p);
+  
+  const headerSubheaderContainer = document.createElement('div');
+  headerSubheaderContainer.classList.add('header-subheader-container');
   headerContainer.appendChild(headerSubheaderContainer);
   
-  const mainDiv = headerSubContainer.appendChild(createElement("div", ["main-container"]));
+  const headerSubContainer = document.createElement('div');
+  headerSubContainer.classList.add('header-sub-container');
+  headerSubheaderContainer.appendChild(headerSubContainer);
   
-  const selectContainer = mainDiv.appendChild(createElement("div", ["radio-container"]));
-
-  const metricContainer = selectContainer.appendChild(createElement("div", ["metric-container"]));
-  metricContainer.appendChild(createElement("input", ["metric-radio-input"], { type: "radio", name: "unit", value: "metric" }));
-  metricContainer.appendChild(createElement("label", ["metric-radio-label"], { textContent: "Metric" }));
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Enter your details below';
+  headerSubContainer.appendChild(h2);
   
-  const imperialContainer = selectContainer.appendChild(createElement("div", ["imperial-container"]));
-  imperialContainer.appendChild(createElement("input", ["radio-input"], { type: "radio", name: "unit", value: "imperial" }));
-  imperialContainer.appendChild(createElement("label", ["radio-label"], { textContent: "Imperial" }));
-
-  const selectedContainers = document.querySelector(".radio-container");
+  const mainDiv = document.createElement('div');
+  mainDiv.classList.add('main-container');
+  headerSubContainer.appendChild(mainDiv);
+  
+  const selectContainer = document.createElement('div');
+  selectContainer.classList.add('radio-container');
+  mainDiv.appendChild(selectContainer);
+  
+  const metricContainer = document.createElement('div');
+  metricContainer.classList.add('metric-container');
+  selectContainer.appendChild(metricContainer);
+  
+  const metricRadioInput = document.createElement('input');
+  metricRadioInput.classList.add('metric-radio-input');
+  metricRadioInput.type = 'radio';
+  metricRadioInput.name = 'unit';
+  metricRadioInput.value = 'metric';
+  metricContainer.appendChild(metricRadioInput);
+  
+  const metricRadioLabel = document.createElement('label');
+  metricRadioLabel.classList.add('metric-radio-label');
+  metricRadioLabel.textContent = 'Metric';
+  metricContainer.appendChild(metricRadioLabel);
+  
+  const imperialContainer = document.createElement('div');
+  imperialContainer.classList.add('imperial-container');
+  selectContainer.appendChild(imperialContainer);
+  
+  const radioInput = document.createElement('input');
+  radioInput.classList.add('radio-input');
+  radioInput.type = 'radio';
+  radioInput.name = 'unit';
+  radioInput.value = 'imperial';
+  imperialContainer.appendChild(radioInput);
+  
+  const radioLabel = document.createElement('label');
+  radioLabel.classList.add('radio-label');
+  radioLabel.textContent = 'Imperial';
+  imperialContainer.appendChild(radioLabel);
+  
+  const selectedContainers = document.querySelector('.radio-container');
   
 let selectedUnit = "metric";
 let metricCart = null;
@@ -47,23 +103,25 @@ function handleUnitChange(event) {
   // Perform any necessary actions based on the selected unit
   if (selectedUnit === "metric") {
     // Show metric cart and hide imperial cart
-    console.log("metric selected");
     if (!metricCart) {
       metricCart = createMetricCart();
     }
     metricCart.style.display = "block";
-
+    
     if (imperialCart) {
       imperialCart.style.display = "none";
+      const headerSub = document.querySelector('.header-subheader-container');
+      headerSub.style.height = '484px';
     }
 
     // Append metric cart to the selected container
     if (selectedContainer) {
       selectedContainer.appendChild(metricCart);
     }
+  
   } else if (selectedUnit === "imperial") {
     // Show imperial cart and hide metric cart
-    console.log("imperial selected");
+   
     if (!imperialCart) {
       imperialCart = createImperialCart();
     }
@@ -77,6 +135,8 @@ function handleUnitChange(event) {
     if (selectedContainer) {
       selectedContainer.appendChild(imperialCart);
     }
+    const headerSub = document.querySelector('.header-subheader-container');
+    headerSub.style.height = '606px';
   }
 }
 
@@ -86,52 +146,137 @@ function setSelectedContainer() {
 }
 
 function createMetricCart() {
-  const cart = createElement("div", ["metric-cart"]);
-  // ... (add your metric cart content here)
-  const metricElementCart = cart.appendChild(createElement("div", ["metric-element-cart"]));
-  const heightWeightElement = metricElementCart.appendChild(createElement("div", ["metric-height-weight"]));
-  const heightLabel = heightWeightElement.appendChild(createElement("div", ["height-label-element"]));
-  heightLabel.appendChild(createElement("h2", ["height-label"], { textContent: "Height" }));
-  const heightInput = heightLabel.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
+  const cart = document.createElement("div");
+  cart.classList.add("metric-cart");
 
-  heightInput.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-      calculateMetricResult();
+  const metricElementCart = document.createElement("div");
+  metricElementCart.classList.add("metric-element-cart");
+  cart.appendChild(metricElementCart);
+
+  const heightWeightElement = document.createElement("div");
+  heightWeightElement.classList.add("metric-height-weight");
+  metricElementCart.appendChild(heightWeightElement);
+
+  const heightLabel = document.createElement("div");
+  heightLabel.classList.add("height-label-element");
+  heightWeightElement.appendChild(heightLabel);
+
+  const heightHeading = document.createElement("h2");
+  heightHeading.classList.add("height-label");
+  heightHeading.textContent = "Height";
+  heightLabel.appendChild(heightHeading);
+
+  const heightInput = document.createElement("input");
+  heightInput.classList.add("height-input");
+  heightInput.type = "number";
+  heightInput.placeholder = "0";
+  heightInput.min = "1";
+  heightInput.value = "";
+  heightLabel.appendChild(heightInput);
+
+  const cmLabel = document.createElement("span");
+  cmLabel.textContent = "cm";
+  cmLabel.classList.add("kg-label");
+  heightLabel.appendChild(cmLabel);
+  heightInput.addEventListener("keyup", calculateMetricResult);
+
+  heightInput.addEventListener('input', function(event) {
+    if (heightInput.value < 0) {
+      heightInput.value = '';
     }
   });
 
-  const weightLabel = heightWeightElement.appendChild(createElement("div", ["weight-label-element"]));
-  weightLabel.appendChild(createElement("h2", ["height-label"], { textContent: "Weight" }));
-  const weightInput = weightLabel.appendChild(createElement("input", ["height-input"], { type: "number", placeholder: "0", min: "1" }));
 
-  weightInput.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-      calculateMetricResult();
+  const weightLabel = document.createElement("div");
+  weightLabel.classList.add("weight-label-element");
+  heightWeightElement.appendChild(weightLabel);
+
+  const weightHeading = document.createElement("h2");
+  weightHeading.classList.add("height-label");
+  weightHeading.textContent = "Weight";
+  weightLabel.appendChild(weightHeading);
+
+  const weightInput = document.createElement("input");
+  weightInput.classList.add("height-input");
+  weightInput.type = "number";
+  weightInput.placeholder = "0";
+  weightInput.min = "1";
+  weightInput.value = "";
+  weightLabel.appendChild(weightInput);
+
+  const kgLabel = document.createElement("span");
+  kgLabel.textContent = "kg";
+  kgLabel.classList.add("kg-label");
+  weightLabel.appendChild(kgLabel);
+
+  weightInput.addEventListener("keyup", calculateMetricResult);
+
+  weightInput.addEventListener('input', function(event) {
+    if (weightInput.value < 0) {
+      weightInput.value = '';
     }
   });
 
-  const resultDiv = metricElementCart.appendChild(createElement("div", ["result-div"]));
-  const resultElement = resultDiv.appendChild(createElement("div", ["result-content"]));
-  const resultCalculator = resultElement.appendChild(createElement("div",["result-calculator"]));
-  resultCalculator.appendChild(createElement("div", ["result-element"]));
-  resultCalculator.appendChild(createElement("div", ["result-text"], {textContent:"Your BMI suggests you’re a healthy weight. Your ideal weight is between 63.3kgs - 85.2kgs."}))
-  const resultMessageContent = resultDiv.appendChild(createElement("div", ["result-message-welcome"]));
-  resultMessageContent.appendChild(createElement("div", ["result-welcome-content"], { textContent: "Welcome!" }))
-  resultMessageContent.appendChild(createElement("div", ["result-message"], {textContent: "Enter your height and weight and you’ll see your BMI result here"}));
+  const resultDiv = document.createElement("div");
+  resultDiv.classList.add("result-div");
+  metricElementCart.appendChild(resultDiv);
+
+  const resultElement = document.createElement("div");
+  resultElement.classList.add("result-content");
+  resultElement.textContent = " ";
+  resultDiv.appendChild(resultElement);
+
+  const resultCalculator = document.createElement("div");
+  resultCalculator.classList.add("result-calculator");
+  resultCalculator.textContent = " ";
+  resultDiv.appendChild(resultCalculator);
+
+  const resultMessageContent = document.createElement("div");
+  resultMessageContent.classList.add("result-message-welcome");
+  resultDiv.appendChild(resultMessageContent);
+
+  const resultWelcomeContent = document.createElement("div");
+  resultWelcomeContent.classList.add("result-welcome-content");
+  resultWelcomeContent.textContent = "Welcome!";
+  resultMessageContent.appendChild(resultWelcomeContent);
+
+  const resultMessage = document.createElement("div");
+  resultMessage.classList.add("result-message");
+  resultMessage.textContent = "Enter your height and weight and you’ll see your BMI result here";
+  resultMessageContent.appendChild(resultMessage);
 
   function calculateMetricResult() {
-    const height = parseInt(heightInput.value);
-    const weight = parseInt(weightInput.value);
+    const height = parseInt(heightInput.value) || 0;
+    const weight = parseInt(weightInput.value) || 0;
     const result = calculateMetric(height, weight);
 
-     if (!height || !weight) {
-    resultMessageContent.style.display = "block";
-    resultCalculator.style.display = "none";
-  } else {
-    resultMessageContent.style.display = "none";
-    resultElement.textContent = `Your BMI is... ${result}`;
-    resultElement.style.display = "block";
+    if (height || weight) {
+      resultMessageContent.style.display = "none";
+      resultElement.textContent = `Your BMI is... ${result}`;
+      resultCalculator.style.display = "block";
+
+      const bmiCategory = getBMICategory(result);
+      const weightRange = getWeightRange(height);
+      resultCalculator.textContent = `Your BMI suggests you're ${bmiCategory}.. Your ideal weight range is ${weightRange}.`;
+    }
   }
+
+  function getBMICategory(bmi) {
+    if (bmi < 18.5) {
+      return 'underweight';
+    } else if (bmi >= 18.5 && bmi < 25) {
+      return 'healthy weight';
+    } else if (bmi >= 25 && bmi < 30) {
+      return 'overweight';
+    } else {
+      return 'obese';
+    }
+  }
+  
+  function getWeightRange(height) {
+    const lowerWeight = calculateMetric(height, 18.5);
+    const upperWeight = calculateMetric(height, 24.9);
+    return `${lowerWeight}kgs - ${upperWeight}kgs`;
   }
 
   function calculateMetric(height, weight) {
@@ -142,21 +287,214 @@ function createMetricCart() {
   return cart;
 }
 
-
 // Function to create the cart for imperial calculations
 function createImperialCart() {
-  const cart = createElement("div", ["imperial-cart"]);
-  const imperialElementCart = cart.appendChild(createElement("div", ["imperial-element-cart"]));
-  const imperialContent = imperialElementCart.appendChild(createElement("div", ["imperial-content"]));
-  const heightWeightElement = imperialContent.appendChild(createElement("div", ["imperial-height-weight"]));
-  const heightLabel = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
-  heightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Height" }));
-  const heightInput = heightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
+  const cart = document.createElement("div");
+  cart.classList.add("imperial-cart");
 
-  const weightLabel = heightWeightElement.appendChild(createElement("div", ["imperial-label-element"]));
-  weightLabel.appendChild(createElement("h2", ["imperial-label"], { textContent: "Weight" }));
-  const weightInput = weightLabel.appendChild(createElement("input", ["imperial-input"], { type: "number", placeholder: "0", min: "1" }));
+  const imperialElementCart = document.createElement("div");
+  imperialElementCart.classList.add("imperial-element-cart");
+  cart.appendChild(imperialElementCart);
 
+  const imperialContent = document.createElement("div");
+  imperialContent.classList.add("imperial-content");
+  imperialElementCart.appendChild(imperialContent);
+
+  // Height Label
+  const heightLabel = document.createElement("div");
+  heightLabel.classList.add("height-label-text");
+  imperialContent.appendChild(heightLabel);
+
+  const heightLabelHeading = document.createElement("h2");
+  heightLabelHeading.classList.add("imperial-label");
+  heightLabelHeading.textContent = "Height";
+  heightLabel.appendChild(heightLabelHeading);
+
+  // Accept Input
+  const acceptInput = document.createElement("div");
+  acceptInput.classList.add("accept-input");
+  imperialContent.appendChild(acceptInput);
+
+  const heightInputContainer = document.createElement("div");
+  heightInputContainer.classList.add("input-container");
+  acceptInput.appendChild(heightInputContainer);
+
+  const feetInput = document.createElement("input");
+  feetInput.classList.add("height-input");
+  feetInput.type = "number";
+  feetInput.placeholder = "0";
+  feetInput.min = "1";
+  feetInput.addEventListener("keyup", calculateImperialResult);
+  heightInputContainer.appendChild(feetInput);
+  feetInput.addEventListener('input', function(event) {
+    if (feetInput.value < 0) {
+      feetInput.value = '';
+    }
+  });
+
+  const feetLabel = document.createElement("label");
+  feetLabel.classList.add("input-label");
+  feetLabel.textContent = "ft";
+  heightInputContainer.appendChild(feetLabel);
+
+  const inchesInputContainer = document.createElement("div");
+  inchesInputContainer.classList.add("input-container");
+  acceptInput.appendChild(inchesInputContainer);
+
+  const inchesInput = document.createElement("input");
+  inchesInput.classList.add("height-input");
+  inchesInput.type = "number";
+  inchesInput.placeholder = "0";
+  inchesInput.min = "1";
+  inchesInput.addEventListener("keyup", calculateImperialResult);
+  inchesInputContainer.appendChild(inchesInput);
+  inchesInput.addEventListener('input', function(event) {
+    if (inchesInput.value < 0) {
+      inchesInput.value = '';
+    }
+  });
+
+  const inchesLabel = document.createElement("label");
+  inchesLabel.classList.add("input-label");
+  inchesLabel.textContent = "in";
+  inchesInputContainer.appendChild(inchesLabel);
+
+  // Weight Label
+  const weightLabel = document.createElement("div");
+  weightLabel.classList.add("weight-label-text");
+  imperialContent.appendChild(weightLabel);
+
+  const weightLabelHeading = document.createElement("h2");
+  weightLabelHeading.classList.add("imperial-label");
+  weightLabelHeading.textContent = "Weight";
+  weightLabel.appendChild(weightLabelHeading);
+
+  // Accept Weight
+  const acceptWeight = document.createElement("div");
+  acceptWeight.classList.add("accept-weight");
+  imperialContent.appendChild(acceptWeight);
+
+  const stonesInputContainer = document.createElement("div");
+  stonesInputContainer.classList.add("input-container");
+  acceptWeight.appendChild(stonesInputContainer);
+
+  const stonesInput = document.createElement("input");
+  stonesInput.classList.add("height-input");
+  stonesInput.type = "number";
+  stonesInput.placeholder = "0";
+  stonesInput.min = "1";
+  stonesInput.addEventListener("keyup", calculateImperialResult);
+  stonesInputContainer.appendChild(stonesInput);
+  stonesInput.addEventListener('input', function(event) {
+    if (stonesInput.value < 0) {
+      stonesInput.value = '';
+    }
+  });
+
+  const stonesLabel = document.createElement("label");
+  stonesLabel.classList.add("input-label");
+  stonesLabel.textContent = "st";
+  stonesInputContainer.appendChild(stonesLabel);
+
+  const poundsInputContainer = document.createElement("div");
+  poundsInputContainer.classList.add("input-container");
+  acceptWeight.appendChild(poundsInputContainer);
+
+  const poundsInput = document.createElement("input");
+  poundsInput.classList.add("height-input");
+  poundsInput.type = "number";
+  poundsInput.placeholder = "0";
+  poundsInput.min = "1";
+  poundsInput.addEventListener("keyup", calculateImperialResult);
+  poundsInputContainer.appendChild(poundsInput);
+  stonesInput.addEventListener('input', function(event) {
+    if (stonesInput.value < 0) {
+      stonesInput.value = '';
+    }
+  });
+
+  const poundsLabel = document.createElement("label");
+  poundsLabel.classList.add("input-label");
+  poundsLabel.textContent = "lbs";
+  poundsInputContainer.appendChild(poundsLabel);
+
+  // Result Div
+  const resultDiv = document.createElement("div");
+  resultDiv.classList.add("imperial-result-div");
+  imperialElementCart.appendChild(resultDiv);
+
+  const resultElement = document.createElement("div");
+  resultElement.classList.add("result-content");
+  resultElement.textContent = " ";
+  resultDiv.appendChild(resultElement);
+
+  const resultCalculator = document.createElement("div");
+  resultCalculator.classList.add("result-suggest");
+  resultCalculator.textContent = " "
+  resultDiv.appendChild(resultCalculator);
+
+  const resultMessageContent = document.createElement("div");
+  resultMessageContent.classList.add("result-message-welcome");
+  resultDiv.appendChild(resultMessageContent);
+
+  const resultWelcomeContent = document.createElement("div");
+  resultWelcomeContent.classList.add("result-welcome-content");
+  resultWelcomeContent.textContent = "Welcome!";
+  resultMessageContent.appendChild(resultWelcomeContent);
+
+  const resultMessage = document.createElement("div");
+  resultMessage.classList.add("result-message");
+  resultMessage.textContent = "Enter your height and weight and you’ll see your BMI result here";
+  resultMessageContent.appendChild(resultMessage);
+
+  function calculateImperialResult() {
+    const feet = parseFloat(feetInput.value) || 0;
+    const inches = parseFloat(inchesInput.value) || 0;
+    const heightInches = feet * 12 + inches;
+
+    const stones = parseFloat(stonesInput.value) || 0;
+    const pounds = parseFloat(poundsInput.value) || 0;
+    const weightPounds = stones * 14 + pounds;
+
+    const heightInchesSquared = heightInches * heightInches;
+    const bmi = (weightPounds / heightInchesSquared) * 703;
+
+    if(heightInches || weightPounds){
+      resultMessageContent.style.display = "none";
+      resultElement.textContent = `Your BMI is... ${bmi.toFixed(1)}`;
+      resultCalculator.textContent = `Your BMI suggests you're a ${getWeightCategory(bmi
+      )}. Your ideal weight is between ${getIdealWeightRange(heightInches)}`;
+
+    }
+  }
+
+  function getWeightCategory(bmi) {
+    if (bmi < 18.5) {
+      return "underweight";
+    } else if (bmi >= 18.5 && bmi < 25) {
+      return "healthy weight";
+    } else if (bmi >= 25 && bmi < 30) {
+      return "overweight";
+    } else {
+      return "obese";
+    }
+  }
+
+  function getIdealWeightRange(heightInches) {
+    const lowerRangeKg = 18.5 * (heightInches * heightInches) / 703;
+    const upperRangeKg = 25 * (heightInches * heightInches) / 703;
+    const lowerRangeLbs = lowerRangeKg * 2.20462; // Convert kg to lbs
+    const upperRangeLbs = upperRangeKg * 2.20462; // Convert kg to lbs
+  
+    const lowerRangeSt = Math.floor(lowerRangeLbs / 14); // Calculate the number of stones
+    const lowerRangeRemainingLbs = (lowerRangeLbs % 14).toFixed(1); // Calculate the remaining pounds
+  
+    const upperRangeSt = Math.floor(upperRangeLbs / 14); // Calculate the number of stones
+    const upperRangeRemainingLbs = (upperRangeLbs % 14).toFixed(1); // Calculate the remaining pounds
+  
+    return `${lowerRangeSt}st ${lowerRangeRemainingLbs}lbs - ${upperRangeSt}st ${upperRangeRemainingLbs}lbs.`;
+  }
+  
   return cart;
 }
 
@@ -179,7 +517,6 @@ handleUnitChange({ target: metricInput });
 headerSubContainer.appendChild(selectContainer);
 document.body.appendChild(section);
 
-  
   const section2 = createElement('section', ['middle-container']);
   const middleContainerElement = section2.appendChild(createElement('div', ['middle-container-element']));
   middleContainerElement.appendChild(createElement('img', ['manIcon'], { src: "./assets/images/image-man-eating.webp", alt: "man" }));
@@ -198,18 +535,24 @@ document.body.appendChild(section);
   
   const healthyEating = fourthContainerElement.appendChild(createElement('div', ['healthy-eating']));
   healthyEating.appendChild(createElement('img', ['eating-icon'], { src: "./assets/images/icon-eating.svg", alt: "eating" }));
-  healthyEating.appendChild(createElement('div', ['healthy-title'], { textContent: "Healthy eating" }));
-  healthyEating.appendChild(createElement('div', ['healthy-status'], { textContent: "Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood." }));
+
+  const healthyContainer = healthyEating.appendChild( createElement("div"), ["healthy-container"])
+  healthyContainer.appendChild(createElement('div', ['healthy-title'], { textContent: "Healthy eating" }));
+  healthyContainer.appendChild(createElement('div', ['healthy-status'], { textContent: "Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood." }));
   
   const regularHealthCheck = fourthContainerElement.appendChild(createElement('div', ['healthy-health-check']));
   regularHealthCheck.appendChild(createElement('img', ['exercise-icon'], { src: "./assets/images/icon-exercise.svg", alt: "exercise" }));
-  regularHealthCheck.appendChild(createElement('div', ['regular-fitness-title'], { textContent: "Regular exercise" }));
-  regularHealthCheck.appendChild(createElement('div', ['exercise-fitness-status'], { textContent: "Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity." }));
+
+  const healthCheckElement = regularHealthCheck.appendChild(createElement('div', ['healthy-health-element']));
+  healthCheckElement.appendChild(createElement('div', ['regular-fitness-title'], { textContent: "Regular exercise" }));
+  healthCheckElement.appendChild(createElement('div', ['exercise-fitness-status'], { textContent: "Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity." }));
   
   const adequateStatus = fourthContainerElement.appendChild(createElement('div', ['adequate-status']));
   adequateStatus.appendChild(createElement('img', ['adequate-icon'], { src: "./assets/images/icon-sleep.svg", alt: "sleep" }));
-  adequateStatus.appendChild(createElement('div', ['sufficiently-sleep-status'], { textContent: "Adequate sleep" }));
-  adequateStatus.appendChild(createElement('div', ['adequate-sleep-status'], { textContent: "Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation." }));
+
+  const effectiveCondition = adequateStatus.appendChild(createElement ('div', ['effective-condition']));
+  effectiveCondition.appendChild(createElement('div', ['sufficiently-sleep-status'], { textContent: "Adequate sleep" }));
+  effectiveCondition.appendChild(createElement('div', ['adequate-sleep-status'], { textContent: "Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation." }));
   
   section3.appendChild(fourthContainerElement);
   document.body.appendChild(section3);
@@ -224,34 +567,38 @@ document.body.appendChild(section);
 
   const gridElement = lastContainerElement.appendChild(createElement('grid', ['grid-container-element']))
 
-  const genderedGridElement = gridElement.appendChild(createElement('div', ['gendered-grid']))
+  const gridContainer = gridElement.appendChild(createElement('div', ['grid-container']))
+  const genderedGridElement = gridContainer.appendChild(createElement('div', ['gendered-grid']))
   const genderedContainer = genderedGridElement.appendChild(createElement('div', ['gendered-container']))
   genderedContainer.appendChild(createElement('img', [], {src: './assets/images/icon-gender.svg', alt: 'gender'}))
   genderedContainer.appendChild(createElement('h5', ['gender-text'], {textContent: 'Gender'}))
   genderedContainer.appendChild(createElement('div', ['gender-develop'], {textContent: "The development and body fat composition of girls and boys vary with age. Consequently, a child's age and gender are considered when evaluating their BMI."}))
 
-  const muscleGridElement = gridElement.appendChild(createElement('div', ['muscle-grid']))
-  const muscleContainer = muscleGridElement.appendChild(createElement('div', ['muscle-container']))
-  muscleContainer.appendChild(createElement('img', [], {src: './assets/images/icon-muscle.svg', alt: 'muscle'}))
-  muscleContainer.appendChild(createElement('h5', ['muscle-text'], {textContent: 'Muscle'}))
-  muscleContainer.appendChild(createElement('div', ['muscle-develop'], {textContent: "BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat."}))
-
-  const ageGridElement = gridElement.appendChild(createElement('div', ['age-grid']))
+  const ageGridElement = gridContainer.appendChild(createElement('div', ['age-grid']))
   const ageContainer = ageGridElement.appendChild(createElement('div', ['age-container']))
   ageContainer.appendChild(createElement('img', [], {src: './assets/images/icon-age.svg', alt: 'age'}))
   ageContainer.appendChild(createElement('h5', ['age-text'], {textContent: 'Age'}))
   ageContainer.appendChild(createElement('div', ['age-develop'], {textContent: "In aging individuals, increased body fat and muscle loss may cause BMI to underestimate body fat content."}))
 
+  const musclePregElement = gridElement.appendChild(createElement('div', ['muscle-preg-element']))
+  const gridAgeRace = musclePregElement.appendChild(createElement('div', ['muscle-grid']))
+  const muscleContainer = gridAgeRace.appendChild(createElement('div', ['muscle-container']))
+  muscleContainer.appendChild(createElement('img', [], {src: './assets/images/icon-muscle.svg', alt: 'muscle'}))
+  muscleContainer.appendChild(createElement('h5', ['muscle-text'], {textContent: 'Muscle'}))
+  muscleContainer.appendChild(createElement('div', ['muscle-develop'], {textContent: "BMI may misclassify muscular individuals as overweight or obese, as it doesn't differentiate muscle from fat."}))
+
+  const pregnancyGridElement = musclePregElement.appendChild(createElement('div', ['pregnancy-grid']))
+  const pregnancyContainer = pregnancyGridElement.appendChild(createElement('div', ['pregnancy-container']))
+  pregnancyContainer.appendChild(createElement('img', [], {src: './assets/images/icon-pregnancy.svg', alt: 'pregnancy'}))
+  pregnancyContainer.appendChild(createElement('h5', ['pregnancy-text'], {textContent: 'Pregnancy'}))
+  pregnancyContainer.appendChild(createElement('div', ['Pregnancy-develop'], {textContent: "  Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child."}))
+ 
   const raceGridElement = gridElement.appendChild(createElement('div', ['race-grid']))
   const raceContainer = raceGridElement.appendChild(createElement('div', ['race-container']))
   raceContainer.appendChild(createElement('img', [], {src: './assets/images/icon-race.svg', alt: 'race'}))
   raceContainer.appendChild(createElement('h5', ['race-text'], {textContent: 'Race'}))
   raceContainer.appendChild(createElement('div', ['race-develop'], {textContent: " Certain health concerns may affect individuals of some Black and Asian origins at lower BMIs than others. To learn more, it is advised to discuss this with your GP or practice nurse."}))
 
-  const pregnancyGridElement = gridElement.appendChild(createElement('div', ['pregnancy-grid']))
-  const pregnancyContainer = pregnancyGridElement.appendChild(createElement('div', ['pregnancy-container']))
-  pregnancyContainer.appendChild(createElement('img', [], {src: './assets/images/icon-pregnancy.svg', alt: 'pregnancy'}))
-  pregnancyContainer.appendChild(createElement('h5', ['pregnancy-text'], {textContent: 'Pregnancy'}))
-  pregnancyContainer.appendChild(createElement('div', ['Pregnancy-develop'], {textContent: "  Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child."}))
+ 
 
   document.body.appendChild(section4);

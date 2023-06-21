@@ -8,12 +8,10 @@ body{
     font-family: 'Inter', sans-serif;
     font-style: normal;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .header{
-    display: flex;
-    flex-direction: row;
     width: 100%;
     height: 737px;
 }
@@ -64,7 +62,7 @@ body{
 .header-subheader-container{
     display: flex;
     margin-left: 43rem;
-    margin-top: -18rem;
+    margin-top: -15rem;
     width: 564px;
     height: 490px;
     background: #fff;
@@ -100,14 +98,20 @@ body{
 .radio-input{
     width: 31px;
     height: 31px;
+    
+}
+
+.radio-input:hover{
+    cursor: pointer;
+    border-color: #345FF6;
 }
 
 .metric-radio-input{
-    /* position: relative; */
     top: 2px;
     width: 31px;
     height: 31px;
 }
+
  .imperial-container{
     display: flex;
     align-items: center;
@@ -117,10 +121,20 @@ body{
  }
 
  .metric-container{
-    /* background: #e71eae; */
     width: 140px;
     height: 35px;
-    
+ }
+
+ span{
+    position: relative;
+    float: right;
+    right: 1.5rem;
+    top: -3.2rem;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.05em;
+    color: #345FF6;
  }
 
 .radio-container{
@@ -142,6 +156,7 @@ body{
 
 .middle-container{
     position: relative;
+    top: 8rem;
     display: flex;
     width: 1160px;
     height: 533px;
@@ -154,8 +169,14 @@ body{
     gap: 131px;
 }
 
+.middle-container-curve{
+    width: 465px;
+    height: 309px;
+}
+
 .curve{
     position: relative;
+    top: -4rem;
     left: 25rem;
 }
 
@@ -190,7 +211,7 @@ body{
 .fourth-container{
     position: relative;
     display: flex;
-    top: 96px;
+    top: 210px;
     width: 100%;
     height: 402px;
     background: linear-gradient(290.1deg, #D6E6FE 0%, rgba(214, 252, 254, 0.10) 80%);
@@ -205,12 +226,14 @@ body{
    gap: 30px;
    align-items: center;
    width: 1159px;
-   height: 234px;
+   height: 260px;
    margin: 72px 117px 96px 116px;
 }
 
-.healthy-title, .regular-fitness-title, .sufficiently-sleep-status{
-    margin-top: 2rem;
+.healthy-title, 
+.regular-fitness-title, 
+.sufficiently-sleep-status{
+    /* margin-top: 2rem; */
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
@@ -218,8 +241,10 @@ body{
     color: #253347;
 }
 
-.healthy-status, .exercise-fitness-status, .adequate-sleep-status{
-    margin-top: 3rem;
+.healthy-status, 
+.exercise-fitness-status, 
+.adequate-sleep-status{
+    /* margin-top: 3rem; */
     width: 365px;
     height: 72px;
     font-weight: 400;
@@ -229,18 +254,15 @@ body{
 }
 
 .last-container{
-    position: relative;
     display: flex;
-    /* margin: 0 auto; */
-    top: 150px;
+    margin-top: 12rem;
     width: 100%;
-    height: 820px;
+    height: 855px;
 }
 
 .last-container-element{
-    position: relative;
     display: flex;
-    width: 100%;
+    width: 1300px;
     height: 704px;
     margin: 72px 117px 96px 116px;
 }
@@ -277,8 +299,8 @@ body{
 }
 
 .grid-container-element{
-    position: absolute;
-    left: 200px;
+    position: relative;
+    right: 455px;
     display: grid;
     width: 961px;
     height: 704px;  
@@ -286,7 +308,7 @@ body{
 
 .gendered-grid{
     position: relative;
-    left: 33rem;
+    left: 40rem;
     width: 365px;
     height: 232px;
     background: #FFFFFF;
@@ -302,9 +324,10 @@ body{
 
 .gender-text, 
 .muscle-text{
-    position: absolute;
-    top: 2.4rem;
-    left: 5rem;
+    position: relative;
+    width: 100px;
+    top: -1.7rem;
+    left: 3.5rem;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
@@ -320,7 +343,7 @@ body{
     position: relative;
     top: -2rem;
     left: 3.5rem;
-    width: 43px;
+    width: 100px;
     height: 24px;
     font-weight: 600;
     font-size: 20px;
@@ -335,7 +358,7 @@ body{
 .muscle-develop,
 .race-develop,
 .Pregnancy-develop{
-    margin-top: 0.8rem;
+    /* margin-top: 0.2rem; */
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
@@ -346,8 +369,8 @@ body{
 
 .muscle-grid{
     position: relative;
-    top: 1rem;
-    left: 44rem;
+    top: -9rem;
+    left: 50rem;
     width: 365px;
     height: 168px;
     background: #FFFFFF;
@@ -357,8 +380,8 @@ body{
 
 .age-grid{
     position: relative;
-    top: -9rem;
-    left: 19rem;
+    top: 3.5rem;
+    left: 25rem;
     width: 365px;
     height: 168px;
     background: #FFFFFF;
@@ -380,8 +403,8 @@ body{
 
 .race-grid{
     position: relative;
-    top: -7rem;
-    left: 32rem;
+    top: -22rem;
+    left: 44rem;
     width: 365px;
     height: 232px;
     background: #FFFFFF;
@@ -391,8 +414,8 @@ body{
 
 .pregnancy-grid{
     position: relative;
-    top: -21.5rem;
-    left: 6rem;
+    top: -7.5rem;
+    right: -19rem;
     width: 365px;
     height: 232px;
     background: #FFFFFF;
@@ -405,7 +428,6 @@ body{
     top: 2rem;
     width: 500px;
     height: 240px;
-    /* background: #e93407; */
    
 }
 
@@ -423,19 +445,17 @@ body{
     gap:12px;
     width: 500px;
     height: 98px;
-    /* background: #ef5c37; */
 }
 
 .imperial-element-cart{
+    margin: 0 auto;
     width: 500px;
-    height: 98px;
-    background: orangered;
+    height: 190px;
 }
 
 .metric-height-weight{
     display: flex;
     gap: 1.5rem;
-    /* background: #e71eae; */
     height: 100px;
     width: 500px;
 }
@@ -443,7 +463,6 @@ body{
 .imperial-height-weight{
     display: flex;
     gap: 1.5rem;
-    /* background: #e71eae; */
     height: 100px;
     width: 500px;
 
@@ -451,7 +470,7 @@ body{
 
 .imperial-content{
     display: block;
-    background: #5E6E85;
+    height: 165px;
 }
 
 .imperial-label-element{
@@ -461,9 +480,46 @@ body{
     gap: 2rem;
 }
 
+.imperial-label{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #5E6E85;
+}
+
+.accept-input{
+    display: flex;
+    /* flex-direction:row; */
+    gap: 24px;
+    width: 500px;
+    height: 69px;
+    /* background: yellow; */
+}
+
+.imperial-input{
+    
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.05em;
+    color: #253347;
+    width: 238px;
+    height: 69px;
+    background: #FFFFFF;
+    border: 1px solid #D8E2E7;
+    border-radius: 12px;
+}
+  
+.height-input::-webkit-outer-spin-button,
+.height-input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .result-div{
     display: flex;
     padding: 32px;
+    margin-top: 1rem;
     gap: 24px;
     width: 500px;
     height: 166px;
@@ -471,31 +527,51 @@ body{
     border-radius: 16px 999px 999px 16px;
 }
 
-.result-content{
+.imperial-result-div{
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    gap: 2rem;
+    padding: 32px;
+    margin-top: 70px;
+    width: 500px;
+    height: 166px;
+    background: linear-gradient(90deg, #345FF7 0%, #587DFF 100%);
+    border-radius: 16px 999px 999px 16px;
+}
+
+.result-content{
+    text-align: center;
+    display: flex;
     color: #FFFFFF;
+    font-size: 28px;
+    width: 200px;
+    height: 102px;
 }
 
 .result-calculator{
-    display: flex;
+    display: none;
+    width: 206px;
+    height: 84px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;      
+    color: #FFFFFF;
 }
 
-.result-text{
-    width: 215px;
+.result-suggest{
+    width: 206px;
     height: 84px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;      
+    color: #FFFFFF;
 }
 
 .result-element{
+    display: none;
     text-align: center;
     width: 170px;
     height: 80px;
     font-size: 27px;
-    display: flex;
     color: #ffffff;
-    /* background: #40e907; */
 }
 
 .height-label{
@@ -516,4 +592,628 @@ body{
     background: #FFFFFF;
     border: 1px solid #D8E2E7;
     border-radius: 12px;
+}
+
+.result-message-welcome{
+    align-items: center;
+    width: 436px;
+    height: 66px;
+}
+
+.result-welcome-content{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.05em;
+    color: #FFFFFF;
+}
+
+.result-message{
+    width: 436px;
+    height: 21px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    margin-top: 16px;
+    color: #FFFFFF;
+}
+
+.imperial-label-element{
+    display: block;
+    width: 150px;
+}
+
+.input-label{
+    position: relative;
+    top: -3rem; 
+    float: left;
+    left: 12rem;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.05em;
+    color: #345FF6;
+
+}
+
+.inches-label{
+    position: relative;
+    height: 25px;
+    top: 1.1rem;
+    right: 3rem;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.05em;
+    color: #345FF6;
+}
+
+.accept-weight{
+    display: flex;
+    gap: 24px;
+}
+
+.weight-label-text{
+    margin-top: 1rem;
+}
+
+@media screen and (max-width:768px) and (min-width:480px) {
+    .header{
+        width: 100%;
+    }
+
+    .logo{
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-container{
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .header-element{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-element-container{
+        position: relative;
+        top: -6rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-element-container h1{
+        display: flex;
+        margin: 0 auto;
+        font-size: 48px;
+        width: 350px;
+        align-items: center;
+    }
+
+    .header-element-container p{
+        position: relative;
+        top: 24px;
+        right: 5rem;
+        margin: 0 auto;
+        font-size: 16px;
+        width: 686px;
+        height: 72px;
+    }
+
+    .header-subheader-container{
+        position: relative;
+        top: 5rem;
+        margin: 0 auto;
+    }
+
+    .middle-container{
+        width: 100%;
+        height: 380px;
+        margin-top: 12rem;
+    }
+
+    .middle-container-element{
+        
+        width: 100%;
+        height: 380px;
+    }
+
+    .manIcon{
+        width: 380px;
+        height: 380px;
+    }
+
+    .bmi-result{
+        font-size: 16px;
+        width: 150px;
+        height: 45px;
+    }
+
+    .middle-container-curve{
+        position: relative;
+        top: 4rem;
+        right: 6rem;
+        width: 331px;
+        height: 314px;
+    }
+
+    .healthy-range{
+        width: 331px;
+    }
+
+    .curve,
+    .line-curve-right{
+        display: none;
+    }
+
+    .fourth-container{
+        width: 100%;
+        height: 484px;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+    }
+
+    .fourth-container-element{
+        width: 100%;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .healthy-eating,
+    .healthy-health-check,
+    .adequate-status{
+        display: flex;
+        gap: 2rem;
+        width: 686px;
+        height: 101px;
+    }
+
+    .healthy-container,
+    .healthy-health-element,
+    .effective-condition{
+        width: 582px;
+        height: 101px;
+    }
+
+    .healthy-title,
+    .regular-fitness-title,
+    .sufficiently-sleep-status{
+        width: 582px;
+        height: 29px;
+    }
+
+    .healthy-status,
+    .exercise-fitness-status,
+    .adequate-sleep-status{
+        margin-top: 1.5rem;
+        width: 582px;
+        height: 48px;
+    }
+
+    .last-container{
+        position: relative;
+        top: 15rem;
+        width: 100%;
+        height: 1040px;
+        margin: 0 auto;
+    }
+
+    .last-container-element{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 686px;
+        height: 975px;
+        margin:  0 auto;
+    }
+
+    .grid-container-element{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        left: 0;
+        width: 686px;
+        height: 963px;
+}
+
+    .grid-container{
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        gap: 1rem;
+        width: 686px;
+        height: 256px;
+    }
+
+    .gendered-grid{
+        left: 0;
+        top: 0;
+        width: 335.5px;
+        height: 232px;
+    }
+
+    .age-grid{
+        left: 0;
+        top: 0;
+        width: 335.5px;
+        height: 232px;
+    }
+
+    .muscle-grid,
+    .pregnancy-grid{
+        left: 0;
+        top: 0;
+        width: 335.5px;
+        height: 232px;
+    }
+
+    .race-grid{
+        left: 0;
+        top: 1rem;
+        width: 335.5px;
+        height: 232px;
+    }
+
+   .muscle-preg-element{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 686px;
+    height: 256px;
+   }
+}
+
+@media screen and (max-width: 480px) and (min-width: 280px) {
+    .header{
+        width: 100%;
+    }
+
+    .logo{
+        display: flex;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .header-container{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .header-element{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 327px;
+        height: 327px;
+        margin-left: -5.5rem;
+    }
+
+    .header-subheader-container{
+        position: relative;
+        top: 5rem;
+        margin: 0 auto;
+        width: 328px;
+        height: 649px;
+    }
+
+    .header-element-container{
+        /* position: relative;
+        top: -6rem; */
+        width: 328px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .header-element-container h1{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        /* margin: 0 auto; */
+        font-size: 48px;
+        width: 327px;
+        height: 159px;
+        align-items: center;
+    }
+
+    .header-element-container p{
+        position: relative;
+        top: 24px;
+        margin: 0 auto;
+        font-size: 16px;
+        width: 327px;
+        height: 144px;
+    }
+
+    .header-sub-container{
+        width: 300px;
+        height: 400px;
+        margin:32px 32px 32px 32px;
+    }
+
+    .radio-container{
+        display: flex;
+        gap: 2px;
+        width: 300px;
+    }
+
+    .metric-cart{
+        width: 320px;
+    }
+
+    .metric-height-weight{
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        width: 280px;
+        height: 212px;
+    }
+
+    .metric-element-cart{
+        width: 320px;
+    }
+
+    .height-input{
+        width: 280px;
+    }
+
+    .result-div{
+        width: 280px;
+        height: 257px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .result-welcome-content{
+        width: 200px;
+    }
+
+    .result-message-welcome{
+        width: 220px;
+    }
+
+    .result-message{
+        width: 200px;
+    }
+
+    .result-content{
+       
+        width: 200px;
+    }
+
+    .imperial-cart{
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+        height: 212px;
+    }
+
+    .height-input{
+        width: 132px;
+        height: 69px;
+    }
+
+    .input-label{
+        left: 6rem;
+    }
+
+    .imperial-result-div{
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+        height: 257px;
+        background: linear-gradient(90deg, #345FF7 0%, #587DFF 100%);
+        border-radius: 16px;
+    }
+
+    .middle-container{
+        width: 375px;
+        height: 1087px;
+    }
+
+    .middle-container-element{
+        width: 375px;
+        height: 74px;
+        margin-top: 15rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .manIcon{
+        width: 375px;
+        height: 354.39px;
+    }
+
+    .curve,
+    .line-curve-right{
+        display: none !important;
+    }
+
+    .middle-container-curve{
+        width: 328px;
+        height: 357px;
+        margin: 0 auto;
+    }
+
+    .bmi-result{
+        font-size: 32px;
+        width: 328px;
+    }
+
+    .healthy-range{
+        width: 328px;
+        height: 228px;
+    }
+
+    .fourth-container{
+        width: 375px;
+        height: 680px;
+    }
+    .fourth-container-element{
+        width: 328px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 35px 20px 10px 24px;
+    }
+
+    .healthy-eating,
+    .healthy-health-check,
+    .adequate-status{
+        margin: 0 auto;
+        width: 327px;
+    }
+
+    .healthy-container{
+        width: 320px;
+    }
+
+    .healthy-status,
+    .exercise-fitness-status,
+    .adequate-sleep-status{
+        width: 320px;
+    }
+
+    .last-container{
+        display: flex;
+        flex-direction: column;
+        margin-top: 17rem;
+        width: 375px;
+        height: 1550px;
+    }
+
+    .last-container-element{
+        display: flex;
+        flex-direction: column;
+        width: 328px;
+        margin: 0 auto;
+    }
+
+    .limitation-status-bmi{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 328px;
+    }
+
+    .limitation-status-header{
+        width: 300px;
+        font-size: 32px;
+    }
+
+    .limitation-status-element{
+        width: 320px;
+    }
+
+    .grid-container-element{
+        display: flex;
+        flex-direction: column;
+        margin-top: 5rem;
+        width: 328px;
+        right: 0;
+    }
+
+    .grid-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 320px;
+    }
+
+    .race-grid{
+        left: 0;
+        top: 1rem;
+        width: 328px;
+        height: 250px;
+    }
+
+    .race-container{
+        width: 275px;
+        height: 170px;
+    }
+
+    .age-grid{
+        width: 320px;
+        height: 216px;
+        left: 0;
+    }
+
+    .age-container{
+        top: 0;
+        width: 275px;
+        height: 170px;
+    }
+
+    .gendered-grid{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 328px;
+        left: 0;
+        top: 3rem;
+    }
+
+    .gendered-container{
+        width: 275px;
+        height: 183px;
+    }
+
+    .muscle-preg-element{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 5rem;
+    }
+
+    .muscle-grid{
+        top: 0;
+        left: 0;
+        width: 320px;
+        height: 216px;
+    }
+
+    .muscle-container{
+        align-items: center;
+        width: 275px;
+        height: 170px;
+    }
+
+    .pregnancy-grid{
+        top: 0;
+        left: 0;
+        width: 328px;
+    }
+
 }
