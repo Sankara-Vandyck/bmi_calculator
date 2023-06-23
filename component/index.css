@@ -521,7 +521,7 @@ body{
 
 .imperial-content{
     display: block;
-    height: 165px;
+    height: 173px;
 }
 
 .imperial-label-element{
@@ -763,13 +763,14 @@ body{
 
     .header-container{
         width: 100%;
-        
+        height: 656px;
     }
 
     .header-element{
         flex-direction: row;
         flex-wrap: wrap;
         margin: 0 auto;
+        height: 545px;
     }
 
     .header-element-container{
@@ -1274,6 +1275,7 @@ body{
 
     .imperial-content{
         width: 300px;
+        background: yellowgreen;
     }
 
     .imperial-element-cart{
