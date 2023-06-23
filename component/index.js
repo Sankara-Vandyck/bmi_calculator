@@ -58,15 +58,15 @@ const createElement = (tag, classNames = [], attributes = {}) => {
   const h2 = document.createElement('h2');
   h2.classList.add('header-container-title');
   h2.textContent = 'Enter your details below';
-  headerContainerElement.appendChild(h2);
+  headerSubContainer.appendChild(h2);
   
-  const mainDiv = document.createElement('div');
-  mainDiv.classList.add('main-container');
-  headerContainerElement.appendChild(mainDiv);
+  // const mainDiv = document.createElement('div');
+  // mainDiv.classList.add('main-container');
+  // headerSubContainer.appendChild(mainDiv);
   
   const selectContainer = document.createElement('div');
   selectContainer.classList.add('radio-container');
-  mainDiv.appendChild(selectContainer);
+  headerSubContainer.appendChild(selectContainer);
   
   const metricContainer = document.createElement('div');
   metricContainer.classList.add('metric-container');
@@ -122,7 +122,7 @@ const createElement = (tag, classNames = [], attributes = {}) => {
     if (imperialCart) {
     imperialCart.style.display = "none";
     const headerSub = document.querySelector('.header-subheader-container');
-    headerSub.style.height = '484px';
+    headerSub.style.height = '475px';
     }
 
     // Append metric cart to the selected container
@@ -147,7 +147,7 @@ const createElement = (tag, classNames = [], attributes = {}) => {
       selectedContainer.appendChild(imperialCart);
     }
     const headerSub = document.querySelector('.header-subheader-container');
-    headerSub.style.height = '606px';
+    headerSub.style.height = '576px';
     }
   }
 
@@ -267,7 +267,7 @@ const createElement = (tag, classNames = [], attributes = {}) => {
 
       const bmiCategory = getBMICategory(result);
       const weightRange = getWeightRange(height);
-      resultCalculator.innerHTML = `Your BMI suggests you're ${bmiCategory}.. Your ideal weight range is <span class="weight-range" > ${weightRange}</span> .`;
+      resultCalculator.innerHTML = `Your BMI suggests you're ${bmiCategory}. Your ideal weight range is between <span class="weight-range" > ${weightRange}</span> .`;
     }
   }
 
