@@ -122,7 +122,7 @@ const createElement = (tag, classNames = [], attributes = {}) => {
     if (imperialCart) {
     imperialCart.style.display = "none";
     const headerSub = document.querySelector('.header-subheader-container');
-    headerSub.style.height = '475px';
+    headerSub.style.height = '484px';
     }
 
     // Append metric cart to the selected container
@@ -147,7 +147,7 @@ const createElement = (tag, classNames = [], attributes = {}) => {
       selectedContainer.appendChild(imperialCart);
     }
     const headerSub = document.querySelector('.header-subheader-container');
-    headerSub.style.height = '576px';
+    headerSub.style.height = '580px';
     }
   }
 
